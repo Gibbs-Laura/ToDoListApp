@@ -3,4 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- colors taskEntrytask priority selection -->
+    <color name="materialYellow">#FFEB3B</color>
+    <color name="materialGreen">#4CAF50</color>
+    <color name="materialRed">#F51504</color>
 </resources>

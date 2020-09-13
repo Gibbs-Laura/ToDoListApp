@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Style for custom white radio button color -->
+    <style name="GreenRadioButton" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@android:color/background_dark</item>
+        <item name="colorControlActivated">@android:color/holo_green_dark</item>
+    </style>
+
+    <style name="YellowRadioButton" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@android:color/background_dark</item>
+        <item name="colorControlActivated">@android:color/holo_orange_dark</item>
+    </style>
+
+    <style name="RedRadioButton" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@android:color/background_dark</item>
+        <item name="colorControlActivated">@android:color/holo_red_dark</item>
+    </style>
+
 </resources>

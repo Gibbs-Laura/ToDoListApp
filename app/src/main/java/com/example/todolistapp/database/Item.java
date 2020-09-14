@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 import java.util.Date;
 
 @Entity(tableName = "task")
-public class TaskEntry {
+public class Item {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -22,17 +22,17 @@ public class TaskEntry {
 
 
     @Ignore
-    public TaskEntry(String name, String description, String priority, Date updatedAt) {
-        //public TaskEntry(String name, String description, int priority, Date updatedAt) {
-        // public TaskEntry(String description, int priority, Date updatedAt) {
+    public Item(String name, String description, String priority, Date updatedAt) {
+        //public Item(String name, String description, int priority, Date updatedAt) {
+        // public Item(String description, int priority, Date updatedAt) {
         this.name = name;
         this.description = description;
         this.priority = priority;
         this.updatedAt = updatedAt;
     }
-    public TaskEntry(int id, String name, String description, String priority, Date updatedAt) {
-        //public TaskEntry(int id, String name, String description, int priority, Date updatedAt) {
-        //public TaskEntry(int id, String description,  int priority, Date updatedAt) {
+    public Item(int id, String name, String description, String priority, Date updatedAt) {
+        //public Item(int id, String name, String description, int priority, Date updatedAt) {
+        //public Item(int id, String description,  int priority, Date updatedAt) {
 
         this.id = id;
         this.name = name;

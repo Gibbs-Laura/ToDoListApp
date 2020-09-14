@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.example.todolistapp.database.AppDatabase;
-import com.example.todolistapp.database.TaskEntry;
+import com.example.todolistapp.database.Item;
 
 import java.util.Date;
 
@@ -82,11 +82,11 @@ public class AddItem extends AppCompatActivity  {
                         = ViewModelProviders.of(this, factory).get(AddTaskViewModel.class);
 
                 // COMPLETED (12) Observe the LiveData object in the ViewModel. Use it also when removing the observer
-                viewModel.getTask().observe(this, new Observer<TaskEntry>() {
+                viewModel.getTask().observe(this, new Observer<Item>() {
                     @Override
-                    public void onChanged(@Nullable TaskEntry taskEntry) {
+                    public void onChanged(@Nullable Item item) {
                         viewModel.getTask().removeObserver(this);
-                        populateUI(taskEntry);
+                        populateUI(item);
                     }
                 });
             }
@@ -168,7 +168,7 @@ public class AddItem extends AppCompatActivity  {
      *
      * @param task the taskEntry to populate the UI
      */
-    private void populateUI(TaskEntry task) {
+    private void populateUI(Item task) {
         if (task == null) {
             return;
         }
@@ -193,7 +193,7 @@ public class AddItem extends AppCompatActivity  {
         String name = getPriorityFromViews2();
         Date date = new Date();
 
-        final TaskEntry item = new TaskEntry( name, description, priority, date);
+        final Item item = new Item( name, description, priority, date);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {

@@ -14,17 +14,17 @@ import java.util.List;
 public interface TaskDao {
 
     @Query("SELECT * FROM task ORDER BY priority")
-    LiveData<List<TaskEntry>> loadAllTasks();
+    LiveData<List<Item>> loadAllTasks();
 
     @Insert
-    void insertTask(TaskEntry taskEntry);
+    void insertTask(Item item);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    void updateTask(TaskEntry taskEntry);
+    void updateTask(Item item);
 
     @Delete
-    void deleteTask(TaskEntry taskEntry);
+    void deleteTask(Item item);
 
     @Query("SELECT * FROM task WHERE id = :id")
-    LiveData<TaskEntry> loadTaskById(int id);
+    LiveData<Item> loadTaskById(int id);
 }

@@ -17,7 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.todolistapp.database.AppDatabase;
-import com.example.todolistapp.database.TaskEntry;
+import com.example.todolistapp.database.Item;
 
 
 import java.util.List;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
                     @Override
                     public void run() {
                         int position = viewHolder.getAdapterPosition();
-                        List<TaskEntry> tasks = mAdapter.getTasks();
+                        List<Item> tasks = mAdapter.getTasks();
                         mDb.taskDao().deleteTask(tasks.get(position));
                     }
                 });
@@ -123,9 +123,9 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
 
     private void setupViewModel() {
         MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        viewModel.getTasks().observe(this, new Observer<List<TaskEntry>>() {
+        viewModel.getTasks().observe(this, new Observer<List<Item>>() {
             @Override
-            public void onChanged(@Nullable List<TaskEntry> taskEntries) {
+            public void onChanged(@Nullable List<Item> taskEntries) {
                 Log.d(TAG, "Updating list of tasks from LiveData in ViewModel");
                 mAdapter.setTasks(taskEntries);
             }

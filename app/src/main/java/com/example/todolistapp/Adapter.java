@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.todolistapp.database.TaskEntry;
+import com.example.todolistapp.database.Item;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -25,9 +25,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
     private static final String DATE_FORMAT = "dd/MM/yyy";
 
     // Member variable to handle item clicks
-    final private ItemClickListener mItemClickListener;
+    final private ItemClickListener itemClickListener;
     // Class variables for the List that holds task data and the Context
-    private List<TaskEntry> mTaskEntries;
+    private List<Item> items;
     private Context mContext;
     // Date formatter
     private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
@@ -40,21 +40,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
      */
     public Adapter(Context context, ItemClickListener listener) {
         mContext = context;
-        mItemClickListener = listener;
+        itemClickListener = listener;
     }
 
     /**
      * Called when ViewHolders are created to fill a RecyclerView.
      *
-     * @return A new TaskViewHolder that holds the view for each task
+     * @return A new ItemViewHolder that holds the view for each task
      */
     @Override
     public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Inflate the task_layout to a view
-        View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.task_layout, parent, false);
+        // Inflate the item_layout to a view
+        View v = LayoutInflater.from(mContext)
+                .inflate(R.layout.item_layout, parent, false);
 
-        return new TaskViewHolder(view);
+        return new TaskViewHolder(v);
     }
 
     /**
@@ -66,13 +66,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
         // Determine the values of the wanted data
-        TaskEntry taskEntry = mTaskEntries.get(position);
-        String description = taskEntry.getDescription();
-        String name = taskEntry.getName();
-        //int priority = taskEntry.getPriority();
-        String priority = taskEntry.getPriority();
+        Item item = items.get(position);
+        String description = item.getDescription();
+        String name = item.getName();
+        //int priority = item.getPriority();
+        String priority = item.getPriority();
 
-        String updatedAt = dateFormat.format(taskEntry.getUpdatedAt());
+        String updatedAt = dateFormat.format(item.getUpdatedAt());
 
         //Set values
        // holder.taskDescriptionView1.setText(name);
@@ -184,22 +184,22 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
      */
     @Override
     public int getItemCount() {
-        if (mTaskEntries == null) {
+        if (items == null) {
             return 0;
         }
-        return mTaskEntries.size();
+        return items.size();
     }
 
-    public List<TaskEntry> getTasks() {
-        return mTaskEntries;
+    public List<Item> getTasks() {
+        return items;
     }
 
     /**
      * When data changes, this method updates the list of taskEntries
      * and notifies the adapter to use the new values on it
      */
-    public void setTasks(List<TaskEntry> taskEntries) {
-        mTaskEntries = taskEntries;
+    public void setTasks(List<Item> taskEntries) {
+        items = taskEntries;
         notifyDataSetChanged();
     }
 
@@ -235,8 +235,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
 
         @Override
         public void onClick(View view) {
-            int elementId = mTaskEntries.get(getAdapterPosition()).getId();
-            mItemClickListener.onItemClickListener(elementId);
+            int elementId = items.get(getAdapterPosition()).getId();
+            itemClickListener.onItemClickListener(elementId);
         }
     }
 }

@@ -6,7 +6,7 @@ import android.arch.lifecycle.LiveData;
 import android.util.Log;
 
 import com.example.todolistapp.database.AppDatabase;
-import com.example.todolistapp.database.TaskEntry;
+import com.example.todolistapp.database.Item;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class MainViewModel extends AndroidViewModel {
     // Constant for logging
     private static final String TAG = MainViewModel.class.getSimpleName();
 
-    private LiveData<List<TaskEntry>> tasks;
+    private LiveData<List<Item>> tasks;
 
     public MainViewModel(Application application) {
         super(application);
@@ -24,7 +24,7 @@ public class MainViewModel extends AndroidViewModel {
         tasks = database.taskDao().loadAllTasks();
     }
 
-    public LiveData<List<TaskEntry>> getTasks() {
+    public LiveData<List<Item>> getTasks() {
         return tasks;
     }
 }

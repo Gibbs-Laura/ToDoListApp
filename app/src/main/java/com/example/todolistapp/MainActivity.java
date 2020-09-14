@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         mAdapter = new TaskAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        DividerItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);
-        mRecyclerView.addItemDecoration(decoration);
+      /*  DividerItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);
+        mRecyclerView.addItemDecoration(decoration); */
 
         /*
          Add a touch helper to the RecyclerView to recognize when a user swipes to delete an item.

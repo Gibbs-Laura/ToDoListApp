@@ -171,14 +171,14 @@
 
     </RadioGroup>
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@drawable/ic_save_black_24dp"
-        android:baselineAligned="false"
-        android:text=" "
-        android:layout_gravity="center"/>
+    <!--   <Button
+          android:id="@+id/saveButton"
+          android:layout_width="35dp"
+          android:layout_height="35dp"
+          android:background="@drawable/ic_save_black_24dp"
+          android:baselineAligned="false"
+          android:text=" "
+          android:layout_gravity="center"/> -->
 
 
-</LinearLayout>
+  </LinearLayout>

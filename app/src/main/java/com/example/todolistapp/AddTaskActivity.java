@@ -43,8 +43,8 @@ public class AddTaskActivity extends AppCompatActivity  {
     EditText mEditText;
     EditText mEditText1;
     // Spinner mEditText1;
-    RadioGroup mRadioGroup;
-    RadioGroup mRadioGroup2;
+    RadioGroup radioGroup1;
+    RadioGroup radioGroup2;
     Button mButton;
 
     private int mTaskId = DEFAULT_TASK_ID;
@@ -118,8 +118,8 @@ public class AddTaskActivity extends AppCompatActivity  {
 
 
 
-        mRadioGroup = findViewById(R.id.radioGroup);
-        mRadioGroup2 = findViewById(R.id.editTextTaskDescription2);
+        radioGroup1 = findViewById(R.id.radioGroup1);
+        radioGroup2 = findViewById(R.id.radioGroup2);
 
         mButton = findViewById(R.id.saveButton);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -199,15 +199,15 @@ public class AddTaskActivity extends AppCompatActivity  {
 
     public String getPriorityFromViews() {
         String priority = "";
-        int checkedId = ((RadioGroup) findViewById(R.id.radioGroup)).getCheckedRadioButtonId();
+        int checkedId = ((RadioGroup) findViewById(R.id.radioGroup2)).getCheckedRadioButtonId();
         switch (checkedId) {
-            case R.id.radButton1:
+            case R.id.radioButtonD:
                 priority = PRIORITY_MEDIUM;
                 break;
-            case R.id.radButton2:
+            case R.id.radioButtonE:
                 priority = PRIORITY_HIGH;
                 break;
-            case R.id.radButton3:
+            case R.id.radioButtonF:
                 priority = PRIORITY_LOW;
         }
         return priority;
@@ -216,15 +216,15 @@ public class AddTaskActivity extends AppCompatActivity  {
 
     public String getPriorityFromViews2() {
         String priority = "";
-        int checkedId = ((RadioGroup) findViewById(R.id.editTextTaskDescription2)).getCheckedRadioButtonId();
+        int checkedId = ((RadioGroup) findViewById(R.id.radioGroup1)).getCheckedRadioButtonId();
         switch (checkedId) {
-            case R.id.radButtonA:
+            case R.id.radioButtonA:
                 priority = H;
                 break;
-            case R.id.radButtonB:
+            case R.id.radioButtonB:
                 priority = S;
                 break;
-            case R.id.radButtonC:
+            case R.id.radioButtonC:
                 priority = W;
         }
         return priority;
@@ -250,13 +250,13 @@ public class AddTaskActivity extends AppCompatActivity  {
     public void setPriorityInViews(String priority) {
         switch (priority) {
             case PRIORITY_MEDIUM:
-                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton1);
+                ((RadioGroup) findViewById(R.id.radioGroup2)).check(R.id.radioButtonD);
                 break;
             case PRIORITY_HIGH:
-                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton2);
+                ((RadioGroup) findViewById(R.id.radioGroup2)).check(R.id.radioButtonE);
                 break;
             case PRIORITY_LOW:
-                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton3);
+                ((RadioGroup) findViewById(R.id.radioGroup2)).check(R.id.radioButtonF);
         }
 
 
@@ -265,13 +265,13 @@ public class AddTaskActivity extends AppCompatActivity  {
     public void setPriorityInViews2(String priority) {
         switch (priority) {
             case H:
-                ((RadioGroup) findViewById(R.id.editTextTaskDescription2)).check(R.id.radButtonA);
+                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonA);
                 break;
             case S:
-                ((RadioGroup) findViewById(R.id.editTextTaskDescription2)).check(R.id.radButtonB);
+                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonB);
                 break;
             case W:
-                ((RadioGroup) findViewById(R.id.editTextTaskDescription2)).check(R.id.radButtonC);
+                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonC);
         }
 
 

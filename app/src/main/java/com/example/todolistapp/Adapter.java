@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * This TaskAdapter creates and binds ViewHolders, that hold the description and priority of a task,
+ * This Adapter creates and binds ViewHolders, that hold the description and priority of a task,
  * to a RecyclerView to efficiently display data.
  */
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
 
     // Constant for date format
     private static final String DATE_FORMAT = "dd/MM/yyy";
@@ -33,12 +33,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     /**
-     * Constructor for the TaskAdapter that initializes the Context.
+     * Constructor for the Adapter that initializes the Context.
      *
      * @param context  the current Context
      * @param listener the ItemClickListener
      */
-    public TaskAdapter(Context context, ItemClickListener listener) {
+    public Adapter(Context context, ItemClickListener listener) {
         mContext = context;
         mItemClickListener = listener;
     }
@@ -75,23 +75,23 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         String updatedAt = dateFormat.format(taskEntry.getUpdatedAt());
 
         //Set values
-        holder.taskDescriptionView1.setText(name);
-        holder.taskDescriptionView.setText(description);
-        holder.updatedAtView.setText(updatedAt);
+       // holder.taskDescriptionView1.setText(name);
+        holder.descriptionView.setText(description);
+        holder.dateView.setText(updatedAt);
 
         // Programmatically set the text and color for the priority TextView
         String priorityString = "" + priority; // converts int to String
-        holder.priorityView.setText(priorityString);
+        holder.progressView.setText(priorityString);
 
         String priorityString1 = "" + name; // converts int to String
-        holder.taskDescriptionView1.setText(priorityString1);
+        holder.typeView.setText(priorityString1);
 
        /* GradientDrawable priorityCircle = (GradientDrawable) holder.priorityView.getBackground();
         // Get the appropriate background color based on the priority
         int priorityColor = getPriorityColor(priority);
         priorityCircle.setColor(priorityColor);*/
 
-          GradientDrawable priorityCircle = (GradientDrawable) holder.priorityView.getBackground();
+          GradientDrawable priorityCircle = (GradientDrawable) holder.progressView.getBackground();
         // Get the appropriate background color based on the priority
         int priorityColor = getPriorityColor(priority);
         priorityCircle.setColor(priorityColor);
@@ -211,11 +211,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // Class variables for the task description and priority TextViews
-        TextView taskDescriptionView;
+        TextView descriptionView;
         //TextView taskDescriptionView1;
-        TextView taskDescriptionView1;
-        TextView updatedAtView;
-        TextView priorityView;
+        TextView typeView;
+        TextView dateView;
+        TextView progressView;
 
         /**
          * Constructor for the TaskViewHolders.
@@ -225,11 +225,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         public TaskViewHolder(View itemView) {
             super(itemView);
 
-            taskDescriptionView = itemView.findViewById(R.id.taskDescription);
+            descriptionView = itemView.findViewById(R.id.description);
             //  taskDescriptionView1 = itemView.findViewById(R.id.taskDescription1);
-            taskDescriptionView1 = itemView.findViewById(R.id.taskDescription1);
-            updatedAtView = itemView.findViewById(R.id.taskUpdatedAt);
-            priorityView = itemView.findViewById(R.id.priorityTextView);
+            typeView = itemView.findViewById(R.id.type);
+            dateView = itemView.findViewById(R.id.dateView);
+            progressView = itemView.findViewById(R.id.progress);
             itemView.setOnClickListener(this);
         }
 

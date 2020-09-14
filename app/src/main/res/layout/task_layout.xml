@@ -12,7 +12,7 @@
     tools:context="com.example.todolistapp.MainActivity">
 
     <TextView
-        android:id="@+id/priorityTextView"
+        android:id="@+id/progress"
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="100dp"
         android:layout_height="22dp"
@@ -32,7 +32,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/taskDescription1"
+            android:id="@+id/type"
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 
         <!-- TextView that displays the description -->
         <TextView
-            android:id="@+id/taskDescription"
+            android:id="@+id/description"
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
        tools:text="11/11/1111" /> -->
 
     <TextView
-        android:id="@+id/taskUpdatedAt"
+        android:id="@+id/dateView"
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="85dp"
         android:layout_height="22dp"

@@ -23,13 +23,13 @@ import com.example.todolistapp.database.TaskEntry;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {
+public class MainActivity extends AppCompatActivity implements Adapter.ItemClickListener {
 
     // Constant for logging
     private static final String TAG = MainActivity.class.getSimpleName();
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
-    private TaskAdapter mAdapter;
+    private Adapter mAdapter;
 
     private AppDatabase mDb;
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the adapter and attach it to the RecyclerView
-        mAdapter = new TaskAdapter(this, this);
+        mAdapter = new Adapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
 
       /*  DividerItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);

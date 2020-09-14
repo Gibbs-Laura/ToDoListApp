@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
@@ -20,7 +18,7 @@ import com.example.todolistapp.database.TaskEntry;
 import java.util.Date;
 
 
-public class AddTaskActivity extends AppCompatActivity  {
+public class AddItem extends AppCompatActivity  {
 
     // Extra for the task ID to be received in the intent
     public static final String EXTRA_TASK_ID = "extraTaskId";
@@ -34,14 +32,13 @@ public class AddTaskActivity extends AppCompatActivity  {
     public static final String DONE = "DONE";
     public static final String IN_PROGRESS = "IN PROGRESS";
     public static final String LATE = "LATE";
-
     public static final String WORK = "WORK";
     public static final String SCHOOL = "SCHOOL";
     public static final String HOME= "HOME";
     // Constant for default task id to be used when not in update mode
     private static final int DEFAULT_TASK_ID = -1;
     // Constant for logging
-    private static final String TAG = AddTaskActivity.class.getSimpleName();
+    private static final String TAG = AddItem.class.getSimpleName();
     // Fields for views
     EditText editText;
     EditText mEditText1;
@@ -50,7 +47,7 @@ public class AddTaskActivity extends AppCompatActivity  {
     RadioGroup radioGroup2;
    // Button mButton;
 
-    private int mTaskId = DEFAULT_TASK_ID;
+    private int itemId = DEFAULT_TASK_ID;
 
     // Member variable for the Database
     private AppDatabase db;
@@ -66,19 +63,19 @@ public class AddTaskActivity extends AppCompatActivity  {
         db = AppDatabase.getInstance(getApplicationContext());
 
         if (savedInstanceState != null && savedInstanceState.containsKey(INSTANCE_TASK_ID)) {
-            mTaskId = savedInstanceState.getInt(INSTANCE_TASK_ID, DEFAULT_TASK_ID);
+            itemId = savedInstanceState.getInt(INSTANCE_TASK_ID, DEFAULT_TASK_ID);
         }
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(EXTRA_TASK_ID)) {
             // mButton.setText(R.string.update_button);
-            if (mTaskId == DEFAULT_TASK_ID) {
+            if (itemId == DEFAULT_TASK_ID) {
                 // populate the UI
-                mTaskId = intent.getIntExtra(EXTRA_TASK_ID, DEFAULT_TASK_ID);
+                itemId = intent.getIntExtra(EXTRA_TASK_ID, DEFAULT_TASK_ID);
 
                 // COMPLETED (9) Remove the logging and the call to loadTaskById, this is done in the ViewModel now
                 // COMPLETED (10) Declare a AddTaskViewModelFactory using mDb and mTaskId
-                AddTaskViewModelFactory factory = new AddTaskViewModelFactory(db, mTaskId);
+                AddTaskViewModelFactory factory = new AddTaskViewModelFactory(db, itemId);
                 // COMPLETED (11) Declare a AddTaskViewModel variable and initialize it by calling ViewModelProviders.of
                 // for that use the factory created above AddTaskViewModel
                 final AddTaskViewModel viewModel
@@ -102,7 +99,7 @@ public class AddTaskActivity extends AppCompatActivity  {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt(INSTANCE_TASK_ID, mTaskId);
+        outState.putInt(INSTANCE_TASK_ID, itemId);
         super.onSaveInstanceState(outState);
     }
 
@@ -110,7 +107,7 @@ public class AddTaskActivity extends AppCompatActivity  {
      * initViews is called from onCreate to init the member variable views
      */
     private void initViews() {
-        editText = findViewById(R.id.editTextTaskDescription);
+        editText = findViewById(R.id.itemDesc);
         //  mEditText1 = findViewById(R.id.editTextTaskDescription1);
         // mEditText1 = findViewById(R.id.spinner);
        /* ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -200,12 +197,12 @@ public class AddTaskActivity extends AppCompatActivity  {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
-                if (mTaskId == DEFAULT_TASK_ID) {
+                if (itemId == DEFAULT_TASK_ID) {
                     // insert new task
                     db.taskDao().insertTask(item);
                 } else {
                     //update task
-                    item.setId(mTaskId);
+                    item.setId(itemId);
                     db.taskDao().updateTask(item);
                 }
                 finish();

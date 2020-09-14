@@ -21,9 +21,9 @@
             </intent-filter>
         </activity>
 
-        <!-- AddTaskActivity -->
+        <!-- AddItem -->
         <activity
-            android:name="com.example.todolistapp.AddTaskActivity"
+            android:name="com.example.todolistapp.AddItem"
             android:label="@string/add_task_activity_name" />
 
     </application>

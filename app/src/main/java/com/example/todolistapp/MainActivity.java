@@ -7,9 +7,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -17,15 +15,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.todolistapp.database.AppDatabase;
 import com.example.todolistapp.database.TaskEntry;
 
 
 import java.util.List;
-
-import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 
 public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemClickListener {
@@ -86,15 +81,15 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         /*
          Set the Floating Action Button (FAB) to its corresponding View.
          Attach an OnClickListener to it, so that when it's clicked, a new intent will be created
-         to launch the AddTaskActivity.
+         to launch the AddItem.
          */
       /*  FloatingActionButton fabButton = findViewById(R.id.fab);
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create a new intent to start an AddTaskActivity
-                Intent addTaskIntent = new Intent(MainActivity.this, AddTaskActivity.class);
+                // Create a new intent to start an AddItem
+                Intent addTaskIntent = new Intent(MainActivity.this, AddItem.class);
                 startActivity(addTaskIntent);
             }
         });
@@ -118,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         int id = item.getItemId();
 
         if (id == R.id.menu_add) {
-            startActivity(new Intent(this, AddTaskActivity.class));
+            startActivity(new Intent(this, AddItem.class));
             return true;
         }
 
@@ -139,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
 
     @Override
     public void onItemClickListener(int itemId) {
-        // Launch AddTaskActivity adding the itemId as an extra in the intent
-        Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-        intent.putExtra(AddTaskActivity.EXTRA_TASK_ID, itemId);
+        // Launch AddItem adding the itemId as an extra in the intent
+        Intent intent = new Intent(MainActivity.this, AddItem.class);
+        intent.putExtra(AddItem.EXTRA_TASK_ID, itemId);
         startActivity(intent);
     }
 }

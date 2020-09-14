@@ -1,7 +1,6 @@
 package com.example.todolistapp;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -125,13 +124,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         Drawable priorityColor = Drawable.createFromPath("");
 
         switch (priority) {
-            case AddTaskActivity.PRIORITY_HIGH:
+            case AddItem.PRIORITY_HIGH:
                 priorityColor = ContextCompat.getDrawable(mContext, R.drawable.ic_save_black_24dp);
                 break;
-            case AddTaskActivity.PRIORITY_MEDIUM:
+            case AddItem.PRIORITY_MEDIUM:
                 priorityColor = ContextCompat.getDrawable(mContext, R.drawable.ic_save_black_24dp);
                 break;
-            case AddTaskActivity.PRIORITY_LOW:
+            case AddItem.PRIORITY_LOW:
                 priorityColor = ContextCompat.getDrawable(mContext, R.drawable.ic_save_black_24dp);
                 break;
             default:
@@ -145,13 +144,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         String priorityColor = "";
 
         switch (priority) {
-            case AddTaskActivity.DONE:
+            case AddItem.DONE:
                 priorityColor = String.valueOf(ContextCompat.getColor(mContext, R.color.materialGreen));
                 break;
-            case AddTaskActivity.IN_PROGRESS:
+            case AddItem.IN_PROGRESS:
                 priorityColor = String.valueOf(ContextCompat.getColor(mContext, R.color.materialYellow));
                 break;
-            case AddTaskActivity.LATE:
+            case AddItem.LATE:
                 priorityColor = String.valueOf(ContextCompat.getColor(mContext, R.color.materialRed));
                 break;
             default:

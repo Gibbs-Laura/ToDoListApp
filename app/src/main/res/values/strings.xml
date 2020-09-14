@@ -7,7 +7,7 @@
     <string name="priority_2">2</string>
     <string name="priority_3">3</string>
 
-    <!-- Strings for AddTaskActivity -->
+    <!-- Strings for AddItem -->
     <!-- This etaskEntrytask has a unicode character for "..." = "&#8230;" -->
     <string name="edit_task_description">Describe your taskEntry&#8230;</string>
     <string name="priority_string">Priority</string>

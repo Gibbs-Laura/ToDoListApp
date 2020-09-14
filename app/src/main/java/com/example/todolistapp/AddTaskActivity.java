@@ -31,29 +31,29 @@ public class AddTaskActivity extends AppCompatActivity  {
     public static final int PRIORITY_MEDIUM = 2;
     public static final int PRIORITY_LOW = 3;*/
 
-    public static final String PRIORITY_HIGH = "DONE";
-    public static final String PRIORITY_MEDIUM = "IN PROGRESS";
-    public static final String PRIORITY_LOW = "LATE";
+    public static final String DONE = "DONE";
+    public static final String IN_PROGRESS = "IN PROGRESS";
+    public static final String LATE = "LATE";
 
-    public static final String W = "WORK";
-    public static final String S = "SCHOOL";
-    public static final String H= "HOME";
+    public static final String WORK = "WORK";
+    public static final String SCHOOL = "SCHOOL";
+    public static final String HOME= "HOME";
     // Constant for default task id to be used when not in update mode
     private static final int DEFAULT_TASK_ID = -1;
     // Constant for logging
     private static final String TAG = AddTaskActivity.class.getSimpleName();
     // Fields for views
-    EditText mEditText;
+    EditText editText;
     EditText mEditText1;
     // Spinner mEditText1;
     RadioGroup radioGroup1;
     RadioGroup radioGroup2;
-    Button mButton;
+   // Button mButton;
 
     private int mTaskId = DEFAULT_TASK_ID;
 
     // Member variable for the Database
-    private AppDatabase mDb;
+    private AppDatabase db;
 
 
 
@@ -63,7 +63,7 @@ public class AddTaskActivity extends AppCompatActivity  {
 
         initViews();
 
-        mDb = AppDatabase.getInstance(getApplicationContext());
+        db = AppDatabase.getInstance(getApplicationContext());
 
         if (savedInstanceState != null && savedInstanceState.containsKey(INSTANCE_TASK_ID)) {
             mTaskId = savedInstanceState.getInt(INSTANCE_TASK_ID, DEFAULT_TASK_ID);
@@ -78,7 +78,7 @@ public class AddTaskActivity extends AppCompatActivity  {
 
                 // COMPLETED (9) Remove the logging and the call to loadTaskById, this is done in the ViewModel now
                 // COMPLETED (10) Declare a AddTaskViewModelFactory using mDb and mTaskId
-                AddTaskViewModelFactory factory = new AddTaskViewModelFactory(mDb, mTaskId);
+                AddTaskViewModelFactory factory = new AddTaskViewModelFactory(db, mTaskId);
                 // COMPLETED (11) Declare a AddTaskViewModel variable and initialize it by calling ViewModelProviders.of
                 // for that use the factory created above AddTaskViewModel
                 final AddTaskViewModel viewModel
@@ -110,7 +110,7 @@ public class AddTaskActivity extends AppCompatActivity  {
      * initViews is called from onCreate to init the member variable views
      */
     private void initViews() {
-        mEditText = findViewById(R.id.editTextTaskDescription);
+        editText = findViewById(R.id.editTextTaskDescription);
         //  mEditText1 = findViewById(R.id.editTextTaskDescription1);
         // mEditText1 = findViewById(R.id.spinner);
        /* ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -176,7 +176,7 @@ public class AddTaskActivity extends AppCompatActivity  {
             return;
         }
 
-        mEditText.setText(task.getDescription());
+        editText.setText(task.getDescription());
         // mEditText1.setText(task.getName());
         //setOnItemSelectedListener(task.getName());
         setPriorityInViews(task.getPriority());
@@ -188,7 +188,7 @@ public class AddTaskActivity extends AppCompatActivity  {
      * It retrieves user input and inserts that new task data into the underlying database.
      */
     public void onSaveButtonClicked() {
-        String description = mEditText.getText().toString();
+        String description = editText.getText().toString();
         //String name = mEditText1.getText().toString();
         // String name = mEditText1.getOnItemSelectedListener().toString();
         // int priority = getPriorityFromViews();
@@ -196,17 +196,17 @@ public class AddTaskActivity extends AppCompatActivity  {
         String name = getPriorityFromViews2();
         Date date = new Date();
 
-        final TaskEntry task = new TaskEntry( name, description, priority, date);
+        final TaskEntry item = new TaskEntry( name, description, priority, date);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
                 if (mTaskId == DEFAULT_TASK_ID) {
                     // insert new task
-                    mDb.taskDao().insertTask(task);
+                    db.taskDao().insertTask(item);
                 } else {
                     //update task
-                    task.setId(mTaskId);
-                    mDb.taskDao().updateTask(task);
+                    item.setId(mTaskId);
+                    db.taskDao().updateTask(item);
                 }
                 finish();
             }
@@ -238,13 +238,13 @@ public class AddTaskActivity extends AppCompatActivity  {
         int checkedId = ((RadioGroup) findViewById(R.id.radioGroup2)).getCheckedRadioButtonId();
         switch (checkedId) {
             case R.id.radioButtonD:
-                priority = PRIORITY_MEDIUM;
+                priority = IN_PROGRESS;
                 break;
             case R.id.radioButtonE:
-                priority = PRIORITY_HIGH;
+                priority = DONE;
                 break;
             case R.id.radioButtonF:
-                priority = PRIORITY_LOW;
+                priority = LATE;
         }
         return priority;
     }
@@ -255,13 +255,13 @@ public class AddTaskActivity extends AppCompatActivity  {
         int checkedId = ((RadioGroup) findViewById(R.id.radioGroup1)).getCheckedRadioButtonId();
         switch (checkedId) {
             case R.id.radioButtonA:
-                priority = H;
+                priority = HOME;
                 break;
             case R.id.radioButtonB:
-                priority = S;
+                priority = SCHOOL;
                 break;
             case R.id.radioButtonC:
-                priority = W;
+                priority = WORK;
         }
         return priority;
     }
@@ -285,13 +285,13 @@ public class AddTaskActivity extends AppCompatActivity  {
 
     public void setPriorityInViews(String priority) {
         switch (priority) {
-            case PRIORITY_MEDIUM:
+            case IN_PROGRESS:
                 ((RadioGroup) findViewById(R.id.radioGroup2)).check(R.id.radioButtonD);
                 break;
-            case PRIORITY_HIGH:
+            case DONE:
                 ((RadioGroup) findViewById(R.id.radioGroup2)).check(R.id.radioButtonE);
                 break;
-            case PRIORITY_LOW:
+            case LATE:
                 ((RadioGroup) findViewById(R.id.radioGroup2)).check(R.id.radioButtonF);
         }
 
@@ -300,13 +300,13 @@ public class AddTaskActivity extends AppCompatActivity  {
 
     public void setPriorityInViews2(String priority) {
         switch (priority) {
-            case H:
+            case HOME:
                 ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonA);
                 break;
-            case S:
+            case SCHOOL:
                 ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonB);
                 break;
-            case W:
+            case WORK:
                 ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonC);
         }
 

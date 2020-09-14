@@ -124,13 +124,13 @@ public class AddTaskActivity extends AppCompatActivity  {
         radioGroup1 = findViewById(R.id.radioGroup1);
         radioGroup2 = findViewById(R.id.radioGroup2);
 
-        mButton = findViewById(R.id.saveButton);
+       /* mButton = findViewById(R.id.saveButton);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onSaveButtonClicked();
             }
-        });
+        });*/
     }
 
 

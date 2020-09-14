@@ -14,6 +14,7 @@
 
     <string name="task_to_be_done">Task to be done</string>
     <string name="enter_priority">Enter Status</string>
+    <string name="menu_add">ADD</string>
 
     <string name="progress">In Progress</string>
     <string name="done">Done</string>

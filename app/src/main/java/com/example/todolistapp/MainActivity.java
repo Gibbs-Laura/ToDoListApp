@@ -14,6 +14,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.todolistapp.database.AppDatabase;
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
          Attach an OnClickListener to it, so that when it's clicked, a new intent will be created
          to launch the AddTaskActivity.
          */
-        FloatingActionButton fabButton = findViewById(R.id.fab);
+      /*  FloatingActionButton fabButton = findViewById(R.id.fab);
 
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,8 +99,31 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
             }
         });
 
+       */
+
         mDb = AppDatabase.getInstance(getApplicationContext());
         setupViewModel();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.add, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.menu_add) {
+            startActivity(new Intent(this, AddTaskActivity.class));
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupViewModel() {

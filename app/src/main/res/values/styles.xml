@@ -24,4 +24,9 @@
         <item name="colorControlActivated">@android:color/holo_red_dark</item>
     </style>
 
+    <style name="pinkRadioButton" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@android:color/background_dark</item>
+        <item name="colorControlActivated">@android:color/holo_purple</item>
+    </style>
+
 </resources>

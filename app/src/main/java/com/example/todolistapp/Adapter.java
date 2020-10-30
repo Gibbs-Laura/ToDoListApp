@@ -73,11 +73,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         String priority = item.getPriority();
 
         String updatedAt = dateFormat.format(item.getUpdatedAt());
+        String progress_number = item.getProgress_number();
 
         //Set values
        // holder.taskDescriptionView1.setText(name);
         holder.descriptionView.setText(description);
         holder.dateView.setText(updatedAt);
+        holder.progressNumView.setText(progress_number);
+
 
         // Programmatically set the text and color for the priority TextView
         String priorityString = "" + priority; // converts int to String
@@ -216,6 +219,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         TextView typeView;
         TextView dateView;
         TextView progressView;
+        TextView progressNumView;
 
         /**
          * Constructor for the TaskViewHolders.
@@ -230,6 +234,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
             typeView = itemView.findViewById(R.id.type);
             dateView = itemView.findViewById(R.id.dateView);
             progressView = itemView.findViewById(R.id.progress);
+            progressNumView = itemView.findViewById(R.id.progress_number);
             itemView.setOnClickListener(this);
         }
 

@@ -11,19 +11,64 @@
     android:background="@drawable/border"
     tools:context="com.example.todolistapp.MainActivity">
 
-    <TextView
-        android:id="@+id/progress"
-        style="@style/TextAppearance.AppCompat.Small"
-        android:layout_width="100dp"
-        android:layout_height="22dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:gravity="center"
-        android:textColor="@android:color/primary_text_light"
-        android:background="@drawable/priority_circle"
-        android:textStyle="bold"
-        tools:text="Description" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/progress"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="100dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+
+            android:background="@drawable/priority_circle"
+            android:gravity="center"
+            android:textColor="@android:color/primary_text_light"
+            android:textStyle="bold"
+            tools:text="Progress" />
+
+        <TextView
+            android:id="@+id/progress_number"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="27dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="right"
+            android:textColor="@android:color/primary_text_light"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            tools:text="percentage" />
+
+
+        <TextView
+            android:id="@+id/percentage"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="100dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:gravity="center"
+            android:text="% completed "
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+
+
+
+
+    </LinearLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="0dp"
@@ -36,10 +81,10 @@
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:textColor="@android:color/primary_text_light"
-            tools:text="Description"
+            tools:text="Category"
             android:textSize="15sp"
             android:textStyle="bold"/>
 
@@ -49,8 +94,8 @@
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:textColor="@android:color/primary_text_light"
             android:textSize="15sp"
             tools:text="Description" />
@@ -115,18 +160,23 @@
        android:textColor="@android:color/primary_text_light"
        tools:text="11/11/1111" /> -->
 
+
     <TextView
         android:id="@+id/dateView"
         style="@style/TextAppearance.AppCompat.Small"
-        android:layout_width="85dp"
+        android:layout_width="100dp"
         android:layout_height="22dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:gravity="center"
         android:textColor="@android:color/primary_text_light"
         android:textSize="12sp"
         tools:text="month/day/year" />
+
+
+
+
 
 
 

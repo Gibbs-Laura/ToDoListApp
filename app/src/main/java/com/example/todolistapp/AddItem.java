@@ -41,7 +41,7 @@ public class AddItem extends AppCompatActivity  {
     private static final String TAG = AddItem.class.getSimpleName();
     // Fields for views
     EditText editText;
-    EditText mEditText1;
+    EditText editTextNum;
     // Spinner mEditText1;
     RadioGroup radioGroup1;
     RadioGroup radioGroup2;
@@ -120,6 +120,7 @@ public class AddItem extends AppCompatActivity  {
 
         radioGroup1 = findViewById(R.id.radioGroup1);
         radioGroup2 = findViewById(R.id.radioGroup2);
+        editTextNum = findViewById(R.id.edit_progress_number);
 
        /* mButton = findViewById(R.id.saveButton);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -176,6 +177,7 @@ public class AddItem extends AppCompatActivity  {
         editText.setText(task.getDescription());
         // mEditText1.setText(task.getName());
         //setOnItemSelectedListener(task.getName());
+        editTextNum.setText(task.getProgress_number());
         setPriorityInViews(task.getPriority());
         setPriorityInViews(task.getName());
     }
@@ -192,8 +194,9 @@ public class AddItem extends AppCompatActivity  {
         String priority = getPriorityFromViews();
         String name = getPriorityFromViews2();
         Date date = new Date();
+        String progress_number = editTextNum.getText().toString();
 
-        final Item item = new Item( name, description, priority, date);
+        final Item item = new Item( name, description, priority, date,progress_number);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {

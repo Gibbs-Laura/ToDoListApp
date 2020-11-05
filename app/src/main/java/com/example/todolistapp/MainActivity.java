@@ -15,6 +15,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.todolistapp.database.AppDatabase;
 import com.example.todolistapp.database.Item;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
     private Adapter mAdapter;
+    private TextView thedate;
+    private Button btngocalendar;
 
     private AppDatabase mDb;
 
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // Set the RecyclerView to its corresponding view
         mRecyclerView = findViewById(R.id.recyclerViewTasks);
@@ -132,6 +139,8 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
         });
     }
 
+
+
     @Override
     public void onItemClickListener(int itemId) {
         // Launch AddItem adding the itemId as an extra in the intent
@@ -139,4 +148,6 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
         intent.putExtra(AddItem.EXTRA_TASK_ID, itemId);
         startActivity(intent);
     }
+
+
 }

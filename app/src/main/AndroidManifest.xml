@@ -26,6 +26,10 @@
             android:name="com.example.todolistapp.AddItem"
             android:label="@string/add_task_activity_name" />
 
+        <activity
+            android:name="com.example.todolistapp.CalendarActivity">
+        </activity>
+
     </application>
 
 

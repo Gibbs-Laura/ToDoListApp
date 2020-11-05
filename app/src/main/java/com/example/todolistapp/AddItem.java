@@ -1,16 +1,26 @@
 package com.example.todolistapp;
 
+
+
+import android.app.DatePickerDialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.CalendarView;
+import android.widget.TextView;
+import java.util.Calendar;
 
 import com.example.todolistapp.database.AppDatabase;
 import com.example.todolistapp.database.Item;
@@ -40,12 +50,19 @@ public class AddItem extends AppCompatActivity  {
     // Constant for logging
     private static final String TAG = AddItem.class.getSimpleName();
     // Fields for views
+    TextView thedate;
+    Button btngocalendar;
     EditText editText;
     EditText editTextNum;
     // Spinner mEditText1;
     RadioGroup radioGroup1;
     RadioGroup radioGroup2;
+    CalendarView mCalendarView;
    // Button mButton;
+   DatePickerDialog picker;
+    EditText eText;
+    Button btnGet;
+    TextView tvw;
 
     private int itemId = DEFAULT_TASK_ID;
 
@@ -58,7 +75,40 @@ public class AddItem extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
 
+
+        tvw=(TextView)findViewById(R.id.textView2);
+        eText=(EditText) findViewById(R.id.editText1);
+        eText.setInputType(InputType.TYPE_NULL);
+        eText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(AddItem.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                eText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
+        btnGet=(Button)findViewById(R.id.button1);
+        btnGet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvw.setText("Selected Date: "+ eText.getText());
+            }
+        });
         initViews();
+
+
 
         db = AppDatabase.getInstance(getApplicationContext());
 
@@ -89,7 +139,10 @@ public class AddItem extends AppCompatActivity  {
                         populateUI(item);
                     }
                 });
+
+
             }
+
         }
 
 
@@ -122,6 +175,8 @@ public class AddItem extends AppCompatActivity  {
         radioGroup2 = findViewById(R.id.radioGroup2);
         editTextNum = findViewById(R.id.edit_progress_number);
 
+
+
        /* mButton = findViewById(R.id.saveButton);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,11 +204,11 @@ public class AddItem extends AppCompatActivity  {
          */
         int id = item.getItemId();
 
-        if (id == android.R.id.home) {
+        /*if (id == android.R.id.home) {
             onBackPressed();
             return true;
         }
-
+*/
         if (id == R.id.save) {
             onSaveButtonClicked();
 
@@ -211,6 +266,9 @@ public class AddItem extends AppCompatActivity  {
                 finish();
             }
         });
+
+
+
     }
 
     /**
@@ -312,6 +370,8 @@ public class AddItem extends AppCompatActivity  {
 
 
     }
+
+
 /*
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

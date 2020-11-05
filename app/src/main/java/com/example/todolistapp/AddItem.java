@@ -76,7 +76,7 @@ public class AddItem extends AppCompatActivity  {
         setContentView(R.layout.add_item);
 
 
-        tvw=(TextView)findViewById(R.id.textView2);
+       // tvw=(TextView)findViewById(R.id.textView2);
         eText=(EditText) findViewById(R.id.editText1);
         eText.setInputType(InputType.TYPE_NULL);
         eText.setOnClickListener(new View.OnClickListener() {
@@ -99,13 +99,13 @@ public class AddItem extends AppCompatActivity  {
                 picker.show();
             }
         });
-        btnGet=(Button)findViewById(R.id.button1);
+      /*  btnGet=(Button)findViewById(R.id.button1);
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tvw.setText("Selected Date: "+ eText.getText());
             }
-        });
+        });*/
         initViews();
 
 

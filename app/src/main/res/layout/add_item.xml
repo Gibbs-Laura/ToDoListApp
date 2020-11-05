@@ -15,6 +15,76 @@
 
 
     <TextView
+        android:id="@+id/tvNewTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/edit_task_description"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/itemDesc"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/imgDate"
+        android:layout_toLeftOf="@+id/imgDate"
+        android:baselineAligned="false"
+        android:textSize="12sp"
+        android:gravity="start"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0" />
+
+    <TextView
+        android:id="@+id/Duedate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="Due Date"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/imgDate"
+        android:layout_toLeftOf="@+id/imgDate"
+        android:baselineAligned="false"
+        android:gravity="start"
+        android:textSize="12sp"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <!-- <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Enter Date" /> -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0" />
+
+
+    <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,15 +97,17 @@
         android:textSize="15sp"
         android:textStyle="bold" />
 
+
+
     <RadioGroup
         android:id="@+id/radioGroup1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvPriority"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:baselineAligned="false"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:weightSum="3">
 
         <RadioButton
@@ -80,34 +152,13 @@
          android:hint="@string/edit_task_description"
          android:paddingBottom="@dimen/activity_horizontal_margin" /> -->
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0" />
 
 
-     <TextView
-         android:id="@+id/tvNewTask"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentStart="true"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentTop="true"
-         android:layout_marginTop="20dp"
-         android:text="@string/edit_task_description"
-         android:textColor="@color/colorPrimary"
-         android:textSize="15sp"
-         android:textStyle="bold" />
-
-
-     <EditText
-         android:id="@+id/itemDesc"
-         android:layout_width="250dp"
-         android:layout_height="wrap_content"
-         android:layout_toStartOf="@+id/imgDate"
-         android:layout_toLeftOf="@+id/imgDate"
-         android:gravity="start"
-         android:hint="@string/edit_task_description"
-         android:paddingBottom="@dimen/activity_horizontal_margin" />
-
-
-     <!-- TextView and FrameLayout (which contains buttons) for Priority Selection -->
+    <!-- TextView and FrameLayout (which contains buttons) for Priority Selection -->
 
 
     <TextView
@@ -130,13 +181,13 @@
 
     <RadioGroup
         android:id="@+id/radioGroup2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvPriority"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:baselineAligned="false"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:weightSum="3">
 
         <RadioButton
@@ -171,6 +222,23 @@
 
     </RadioGroup>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0" />
+
+    <TextView
+        android:id="@+id/progress_numb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgTime"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:text="Progress of the Task"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edit_progress_number"
@@ -193,32 +261,25 @@
           android:layout_gravity="center"/> -->
 
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Enter Date" />
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_marginLeft="40dp"
-        android:text="Get Date" />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="18dp"/>
 
 
+    <!--  <Button
+         android:id="@+id/button1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/editText1"
+         android:layout_marginLeft="40dp"
+         android:text="Get Date" />
+
+     <TextView
+         android:id="@+id/textView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/button1"
+         android:layout_marginLeft="40dp"
+         android:layout_marginTop="10dp"
+         android:textSize="18dp"
+         android:textStyle="bold" /> -->
 
 
-</LinearLayout>
+ </LinearLayout>

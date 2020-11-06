@@ -83,6 +83,35 @@
         android:layout_height="2dp"
         android:background="#c0c0c0" />
 
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="Time"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/imgDate"
+        android:layout_toLeftOf="@+id/imgDate"
+        android:baselineAligned="false"
+        android:textSize="12sp"
+        android:gravity="start"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0" />
 
     <TextView
         android:id="@+id/textView1"
@@ -280,6 +309,13 @@
          android:layout_marginTop="10dp"
          android:textSize="18dp"
          android:textStyle="bold" /> -->
+
+
+
+
+
+
+
 
 
  </LinearLayout>

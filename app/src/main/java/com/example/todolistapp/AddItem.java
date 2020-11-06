@@ -3,6 +3,7 @@ package com.example.todolistapp;
 
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.widget.RadioGroup;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import java.util.Calendar;
+import android.widget.TimePicker;
 
 import com.example.todolistapp.database.AppDatabase;
 import com.example.todolistapp.database.Item;
@@ -62,8 +64,10 @@ public class AddItem extends AppCompatActivity  {
    DatePickerDialog picker;
     EditText eText;
     Button btnGet;
-    TextView tvw;
 
+    TimePickerDialog picker2;
+    EditText eText2;
+    TextView tvw;
     private int itemId = DEFAULT_TASK_ID;
 
     // Member variable for the Database
@@ -74,6 +78,12 @@ public class AddItem extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
+
+
+
+
+
+
 
 
        // tvw=(TextView)findViewById(R.id.textView2);
@@ -99,6 +109,36 @@ public class AddItem extends AppCompatActivity  {
                 picker.show();
             }
         });
+
+       // tvw=(TextView)findViewById(R.id.textView3);
+        eText2=(EditText) findViewById(R.id.editText3);
+        eText2.setInputType(InputType.TYPE_NULL);
+        eText2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                int minutes = cldr.get(Calendar.MINUTE);
+                // time picker dialog
+                picker2 = new TimePickerDialog(AddItem.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                eText2.setText(sHour + ":" + sMinute);
+                            }
+                        }, hour, minutes, true);
+                picker2.show();
+            }
+        });
+       /* btnGet=(Button)findViewById(R.id.button1);
+        btnGet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvw.setText("Selected Time: "+ eText2.getText());
+            }
+        });
+*/
+
       /*  btnGet=(Button)findViewById(R.id.button1);
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override

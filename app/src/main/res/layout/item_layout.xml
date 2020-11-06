@@ -161,18 +161,38 @@
        tools:text="11/11/1111" /> -->
 
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/dateView"
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="100dp"
         android:layout_height="22dp"
         android:layout_gravity="center"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:gravity="center"
         android:textColor="@android:color/primary_text_light"
         android:textSize="12sp"
         tools:text="month/day/year" />
+
+    <TextView
+        android:id="@+id/timeView"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="100dp"
+        android:layout_height="22dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="12sp"
+        tools:text="hour:mins" />
+
+    </LinearLayout>
 
 
 

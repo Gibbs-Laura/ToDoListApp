@@ -17,9 +17,10 @@ public class Item {
     private String description;
     private String priority;
     private String progress_number;
-    private String clock;
+    private String date;
+    private String time;
     //private int priority;
-    //private String date;
+
 
     @ColumnInfo(name = "updated_at")
     private Date updatedAt;
@@ -29,13 +30,14 @@ public class Item {
 
     @Ignore
   //  public Item(String name, String description, String priority,  String progress_number, Date updatedAt) {
-     public Item(String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
+     public Item(String name, String description, String priority,  String progress_number, String date, String time, Date updatedAt){
 
         this.name = name;
         this.description = description;
         this.priority = priority;
         this.progress_number = progress_number;
-        this.clock = clock;
+        this.date = date;
+        this.time = time;
         this.updatedAt = updatedAt;
         //this.date = date;
 
@@ -43,14 +45,15 @@ public class Item {
 
 
    //  public Item(int id, String name, String description, String priority,  String progress_number, Date updatedAt) {
-      public Item(int id, String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
+      public Item(int id, String name, String description, String priority,  String progress_number, String date, String time, Date updatedAt){
 
         this.id = id;
         this.name = name;
         this.description = description;
         this.priority = priority;
         this.progress_number = progress_number;
-        this.clock = clock;
+        this.date = date;
+        this.time = time;
         this.updatedAt = updatedAt;
          // this.date = date;
     }
@@ -108,11 +111,18 @@ public class Item {
         this.date = date;
     }*/
 
-     public String getClock() {
-        return clock;
+     public String getDate() {
+        return date;
     }
 
-    public void setClock(String clock) {
-        this.clock = clock;
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

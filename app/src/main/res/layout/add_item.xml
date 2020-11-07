@@ -97,7 +97,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/dueTime"
+        android:id="@+id/editDueTime"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_toStartOf="@+id/imgDate"
@@ -256,17 +256,7 @@
         android:layout_height="2dp"
         android:background="#c0c0c0" />
 
-    <EditText
-        android:id="@+id/editTimeTest"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_toStartOf="@+id/imgDate"
-        android:layout_toLeftOf="@+id/imgDate"
-        android:baselineAligned="false"
-        android:textSize="12sp"
-        android:gravity="start"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
 
     <!--  <TextView
         android:id="@+id/progress_numb"
@@ -293,35 +283,6 @@
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 
 
-    <!--   <Button
-          android:id="@+id/saveButton"
-          android:layout_width="35dp"
-          android:layout_height="35dp"
-          android:background="@drawable/ic_save_black_24dp"
-          android:baselineAligned="false"
-          android:text=" "
-          android:layout_gravity="center"/> -->
-
-
-
-
-    <!--  <Button
-         android:id="@+id/button1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/editText1"
-         android:layout_marginLeft="40dp"
-         android:text="Get Date" />
-
-     <TextView
-         android:id="@+id/textView2"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/button1"
-         android:layout_marginLeft="40dp"
-         android:layout_marginTop="10dp"
-         android:textSize="18dp"
-         android:textStyle="bold" /> -->
 
 
 

@@ -168,7 +168,7 @@
          android:orientation="vertical">
 
            <TextView
-               android:id="@+id/timeViewTest"
+               android:id="@+id/dueDateView"
                style="@style/TextAppearance.AppCompat.Small"
                android:layout_width="100dp"
                android:layout_height="18dp"
@@ -195,6 +195,21 @@
              android:textColor="@android:color/primary_text_light"
              android:textSize="12sp"
              tools:text="month/day/year" />
+
+
+           <TextView
+               android:id="@+id/timeView"
+               style="@style/TextAppearance.AppCompat.Small"
+               android:layout_width="100dp"
+               android:layout_height="18dp"
+               android:layout_gravity="center"
+               android:layout_marginStart="8dp"
+               android:layout_marginLeft="8dp"
+               android:gravity="center"
+               android:text="% completed "
+               android:textColor="@android:color/primary_text_light"
+               android:textSize="13sp"
+               android:textStyle="bold" />
 
 
 

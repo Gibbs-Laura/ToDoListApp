@@ -76,7 +76,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         String progress_number = item.getProgress_number();
        // String progress_number2 = item.getClock();
        // String date = item.getDate();
-        String clock = item.getClock();
+        String date = item.getDate();
+        String clock = item.getTime();
 
 
         //Set values
@@ -88,7 +89,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
 
        // holder.dateView2.setText(date);
 
-        holder.timeViewTest1.setText(clock);
+        holder.dueDateView.setText(date);
+        holder.timeView.setText(clock);
 
         // Programmatically set the text and color for the priority TextView
         String priorityString = "" + priority; // converts int to String
@@ -230,7 +232,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         TextView progressNumView;
         //TextView progressNumView2;
        // TextView dateView2;
-        TextView timeViewTest1;
+        TextView dueDateView;
+        TextView timeView;
 
         /**
          * Constructor for the TaskViewHolders.
@@ -247,7 +250,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
             progressView = itemView.findViewById(R.id.progress);
             progressNumView = itemView.findViewById(R.id.progress_number);
            // progressNumView2 = itemView.findViewById(R.id.progress_number2);
-            timeViewTest1 = itemView.findViewById(R.id.timeViewTest);
+            dueDateView = itemView.findViewById(R.id.dueDateView);
+            timeView = itemView.findViewById(R.id.timeView);
           //  dateView2 = itemView.findViewById(R.id.dateView2);
             itemView.setOnClickListener(this);
         }

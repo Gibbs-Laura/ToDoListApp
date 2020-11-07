@@ -63,6 +63,7 @@ public class AddItem extends AppCompatActivity  {
     EditText editTextDataPicker;
 
    EditText editTextTimeTest;
+    EditText editTextTime;
 
     TimePickerDialog timePicker;
     EditText editTextTimePicker;
@@ -101,7 +102,7 @@ public class AddItem extends AppCompatActivity  {
         });
 
        // TIME PICKER
-        editTextTimePicker=(EditText) findViewById(R.id.dueTime);
+        editTextTimePicker=(EditText) findViewById(R.id.editDueTime);
         editTextTimePicker.setInputType(InputType.TYPE_NULL);
         editTextTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,6 +193,7 @@ public class AddItem extends AppCompatActivity  {
        // editTextNum2 = findViewById(R.id.edit_progress_number2);
        // editTextDataPicker = findViewById(R.id.editDueDate);
          editTextTimeTest = findViewById(R.id.editDueDate);
+        editTextTime = findViewById(R.id.editDueTime);
 
 
 
@@ -256,8 +258,9 @@ public class AddItem extends AppCompatActivity  {
         setPriorityInViews(task.getPriority());
         setPriorityInViews(task.getName());
 
-        editTextTimeTest.setText(task.getClock());
+        editTextTimeTest.setText(task.getDate());
        // editTextDataPicker.setText(task.getDate());
+        editTextTime.setText(task.getTime());
     }
 
     /**
@@ -275,10 +278,11 @@ public class AddItem extends AppCompatActivity  {
         String progress_number = editTextNum.getText().toString();
        // String clock = editTextNum2.getText().toString();
        // String date2 = editTextDataPicker.getText().toString();
-        String clock = editTextTimeTest.getText().toString();
+        String dueDate = editTextTimeTest.getText().toString();
+        String time = editTextTime.getText().toString();
 
       //  final Item item = new Item( name, description,  priority, progress_number, clock, date);
-       final Item item = new Item( name, description,  priority, progress_number, clock, date);
+       final Item item = new Item( name, description,  priority, progress_number, dueDate,time, date);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {

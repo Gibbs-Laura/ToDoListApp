@@ -72,7 +72,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         //int priority = item.getPriority();
         String priority = item.getPriority();
 
-        String updatedAt = dateFormat.format(item.getUpdatedAt());
+     //   String updatedAt = dateFormat.format(item.getUpdatedAt());
         String progress_number = item.getProgress_number();
        // String progress_number2 = item.getClock();
        // String date = item.getDate();
@@ -83,7 +83,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         //Set values
        // holder.taskDescriptionView1.setText(name);
         holder.descriptionView.setText(description);
-        holder.dateView.setText(updatedAt);
+     //   holder.dateView.setText(updatedAt);
         holder.progressNumView.setText(progress_number);
        // holder.progressNumView2.setText(progress_number2);
 
@@ -236,7 +236,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         TextView timeView;
 
         /**
-         * Constructor for the TaskViewHolders.
+         * Constructor for the TaskViewHolders. (ITEM_LAYOUT.XML)
          *
          * @param itemView The view inflated in onCreateViewHolder
          */
@@ -246,7 +246,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
             descriptionView = itemView.findViewById(R.id.description);
             //  taskDescriptionView1 = itemView.findViewById(R.id.taskDescription1);
             typeView = itemView.findViewById(R.id.type);
-            dateView = itemView.findViewById(R.id.dateView);
+         //   dateView = itemView.findViewById(R.id.dateView);
             progressView = itemView.findViewById(R.id.progress);
             progressNumView = itemView.findViewById(R.id.progress_number);
            // progressNumView2 = itemView.findViewById(R.id.progress_number2);

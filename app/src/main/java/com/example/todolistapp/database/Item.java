@@ -22,15 +22,15 @@ public class Item {
     //private int priority;
 
 
-    @ColumnInfo(name = "updated_at")
-    private Date updatedAt;
+   // @ColumnInfo(name = "updated_at")
+  //  private Date updatedAt;
     //private String date;
 
 
 
     @Ignore
-  //  public Item(String name, String description, String priority,  String progress_number, Date updatedAt) {
-     public Item(String name, String description, String priority,  String progress_number, String date, String time, Date updatedAt){
+    // public Item(String name, String description, String priority,  String progress_number, String date, String time, Date updatedAt){
+    public Item(String name, String description, String priority,  String progress_number, String date, String time){
 
         this.name = name;
         this.description = description;
@@ -38,14 +38,14 @@ public class Item {
         this.progress_number = progress_number;
         this.date = date;
         this.time = time;
-        this.updatedAt = updatedAt;
+      //  this.updatedAt = updatedAt;
         //this.date = date;
 
     }
 
 
-   //  public Item(int id, String name, String description, String priority,  String progress_number, Date updatedAt) {
-      public Item(int id, String name, String description, String priority,  String progress_number, String date, String time, Date updatedAt){
+    public Item(int id, String name, String description, String priority,  String progress_number, String date, String time){
+     // public Item(int id, String name, String description, String priority,  String progress_number, String date, String time, Date updatedAt){
 
         this.id = id;
         this.name = name;
@@ -54,7 +54,7 @@ public class Item {
         this.progress_number = progress_number;
         this.date = date;
         this.time = time;
-        this.updatedAt = updatedAt;
+     //   this.updatedAt = updatedAt;
          // this.date = date;
     }
 
@@ -91,13 +91,13 @@ public class Item {
         this.priority = priority;
     }
 
-    public Date getUpdatedAt() {
+   /* public Date getUpdatedAt() {
         return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
+    }*/
 
     public  String getProgress_number() {return progress_number;}
 

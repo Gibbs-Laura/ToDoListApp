@@ -281,8 +281,8 @@ public class AddItem extends AppCompatActivity  {
         String dueDate = editTextTimeTest.getText().toString();
         String time = editTextTime.getText().toString();
 
-      //  final Item item = new Item( name, description,  priority, progress_number, clock, date);
-       final Item item = new Item( name, description,  priority, progress_number, dueDate,time, date);
+        //final Item item = new Item( name, description,  priority, progress_number, dueDate,time, date);
+       final Item item = new Item( name, description,  priority, progress_number, dueDate,time);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {

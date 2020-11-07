@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-    This vertical linear layout contains all the views in the AddItem code.
-    This includes an EditText to adtaskEntrytask description, and buttons to select a priority
--->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin">
 
+    <!-- Task description -->
 
     <TextView
         android:id="@+id/tvNewTask"
@@ -34,7 +32,8 @@
         android:layout_toStartOf="@+id/imgDate"
         android:layout_toLeftOf="@+id/imgDate"
         android:baselineAligned="false"
-        android:textSize="12sp"
+        android:textSize="14sp"
+        android:hint="Add description of the task"
         android:gravity="start"
         android:paddingBottom="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
@@ -43,6 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#c0c0c0" />
+
+    <!-- Due date -->
 
     <TextView
         android:id="@+id/Duedate"
@@ -65,23 +66,20 @@
         android:layout_toLeftOf="@+id/imgDate"
         android:baselineAligned="false"
         android:gravity="start"
-        android:textSize="12sp"
+        android:textSize="14sp"
+        android:hint="Enter due date"
         android:paddingBottom="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
-    <!-- <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Enter Date" /> -->
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#c0c0c0" />
+
+
+    <!-- Time -->
 
     <TextView
         android:id="@+id/time"
@@ -103,8 +101,9 @@
         android:layout_toStartOf="@+id/imgDate"
         android:layout_toLeftOf="@+id/imgDate"
         android:baselineAligned="false"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:gravity="start"
+        android:hint="Enter due date"
         android:paddingBottom="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
@@ -112,6 +111,8 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#c0c0c0" />
+
+    <!-- RadioGroup for category -->
 
     <TextView
         android:id="@+id/textView1"
@@ -171,15 +172,7 @@
 
     </RadioGroup>
 
-    <!-- <EditText
-         android:id="@+id/editTextTaskDescription1"
-         android:layout_width="250dp"
-         android:layout_height="wrap_content"
-         android:layout_toStartOf="@+id/imgDate"
-         android:layout_toLeftOf="@+id/imgDate"
-         android:gravity="start"
-         android:hint="@string/edit_task_description"
-         android:paddingBottom="@dimen/activity_horizontal_margin" /> -->
+
 
     <View
         android:layout_width="match_parent"
@@ -187,9 +180,8 @@
         android:background="#c0c0c0" />
 
 
-    <!-- TextView and FrameLayout (which contains buttons) for Priority Selection -->
 
-
+    <!-- RadioGroup for progress' task -->
     <TextView
         android:id="@+id/tvPriority"
         android:layout_width="wrap_content"
@@ -203,10 +195,6 @@
         android:textSize="15sp"
         android:textStyle="bold" />
 
-
-    <!-- RadioGroup for visible selection of a priority -->
-
-    <!-- Add button -->
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -258,18 +246,20 @@
 
 
 
-    <!--  <TextView
-        android:id="@+id/progress_numb"
+    <!-- What percentage of the task is being done -->
+
+    <TextView
+        android:id="@+id/percentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgTime"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="30dp"
-        android:text="Progress of the Task"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="Progress"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp"
-        android:textStyle="bold" /> -->
+        android:textStyle="bold" />
 
 
     <EditText
@@ -279,17 +269,9 @@
         android:layout_toStartOf="@+id/imgDate"
         android:layout_toLeftOf="@+id/imgDate"
         android:gravity="start"
+        android:textSize="14sp"
         android:hint="@string/edit_progress_number"
         android:paddingBottom="@dimen/activity_horizontal_margin" />
-
-
-
-
-
-
-
-
-
-
+    
 
  </LinearLayout>

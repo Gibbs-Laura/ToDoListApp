@@ -11,6 +11,7 @@
     android:background="@drawable/border"
     tools:context="com.example.todolistapp.MainActivity">
 
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -25,7 +26,6 @@
             android:layout_gravity="center"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-
             android:background="@drawable/priority_circle"
             android:gravity="center"
             android:textColor="@android:color/primary_text_light"
@@ -60,10 +60,6 @@
             android:textColor="@android:color/primary_text_light"
             android:textSize="13sp"
             android:textStyle="bold" />
-
-
-
-
 
     </LinearLayout>
 
@@ -100,65 +96,8 @@
             android:textSize="15sp"
             tools:text="Description" />
 
-        <!-- TextView that displays the update date -->
-        <!--<TextView
-           android:id="@+id/priorityTextView"
-           style="@style/TextAppearance.AppCompat.Small"
-           android:layout_width="22dp"
-           android:layout_height="22dp"
-           android:layout_marginLeft="8dp"
-           android:layout_marginStart="8dp"
-           android:textAlignment="center"
-           android:textColor="@android:color/primary_text_light"
-           tools:text="1" /> -->
-
-        <!-- A priority circle that is colored in programmatically in the adapter code -->
-
-        <!--  <TextView
-             android:id="@+id/priorityTextView"
-             style="@style/TextAppearance.AppCompat.Medium"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:background="@drawable/priority_circle"
-             android:textColor="@android:color/primary_text_light"
-             tools:text="Description" /> -->
-        <!--  <TextView
-             android:id="@+id/taskUpdatedAt"
-             style="@style/TextAppearance.AppCompat.Small"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:textColor="@android:color/primary_text_light"
-             tools:text="11/11/1111" /> -->
 
       </LinearLayout>
-
-
-     <!--    <TextView
-        android:id="@+id/priorityTextView"
-        style="@style/TextAppearance.AppCompat.Small"
-           android:layout_width="120dp"
-           android:layout_height="50dp"
-           android:layout_gravity="center"
-           android:layout_marginLeft="8dp"
-           android:layout_marginStart="8dp"
-           android:gravity="center"
-        android:background="@drawable/priority_circle"
-        android:textColor="@android:color/primary_text_light"
-           android:textStyle="bold"
-        tools:text="Description" /> -->
-
-
-  <!-- <TextView
-       android:id="@+id/taskUpdatedAt"
-       style="@style/TextAppearance.AppCompat.Small"
-       android:layout_width="85dp"
-       android:layout_height="22dp"
-       android:layout_gravity="center"
-       android:layout_marginLeft="8dp"
-       android:layout_marginStart="8dp"
-       android:gravity="center"
-       android:textColor="@android:color/primary_text_light"
-       tools:text="11/11/1111" /> -->
 
 
        <LinearLayout
@@ -167,91 +106,45 @@
          android:layout_weight="1"
          android:orientation="vertical">
 
+                <TextView
+                 android:id="@+id/dateView"
+                 style="@style/TextAppearance.AppCompat.Small"
+                 android:layout_width="100dp"
+                 android:layout_height="10dp"
+                 android:layout_gravity="center"
+                 android:layout_marginStart="4dp"
+                 android:layout_marginLeft="4dp"
+                 android:gravity="center"
+                 android:textColor="@android:color/primary_text_light"
+                 android:textSize="11sp" />
+
            <TextView
                android:id="@+id/dueDateView"
-               style="@style/TextAppearance.AppCompat.Small"
-               android:layout_width="100dp"
-               android:layout_height="18dp"
-               android:layout_gravity="center"
-               android:layout_marginStart="8dp"
-               android:layout_marginLeft="8dp"
-               android:gravity="center"
-               android:text="% completed "
-               android:textColor="@android:color/primary_text_light"
-               android:textSize="13sp"
-               android:textStyle="bold" />
-
-
-
-           <TextView
-             android:id="@+id/dateView"
-             style="@style/TextAppearance.AppCompat.Small"
-             android:layout_width="100dp"
-             android:layout_height="22dp"
-             android:layout_gravity="center"
-             android:layout_marginStart="4dp"
-             android:layout_marginLeft="4dp"
-             android:gravity="center"
-             android:textColor="@android:color/primary_text_light"
-             android:textSize="12sp"
-             tools:text="month/day/year" />
-
-
-           <TextView
-               android:id="@+id/timeView"
-               style="@style/TextAppearance.AppCompat.Small"
-               android:layout_width="100dp"
-               android:layout_height="18dp"
-               android:layout_gravity="center"
-               android:layout_marginStart="8dp"
-               android:layout_marginLeft="8dp"
-               android:gravity="center"
-               android:text="% completed "
-               android:textColor="@android:color/primary_text_light"
-               android:textSize="13sp"
-               android:textStyle="bold" />
-
-
-
-
-</LinearLayout>
-
-
-
-
-         <!--   <TextView
-               android:id="@+id/dateView2"
-               style="@style/TextAppearance.AppCompat.Small"
-               android:layout_width="100dp"
-               android:layout_height="22dp"
-               android:layout_gravity="center"
-               android:layout_marginStart="4dp"
-               android:layout_marginLeft="4dp"
-               android:gravity="center"
+               style="@style/TextAppearance.AppCompat.Medium"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="20dp"
+               android:layout_marginStart="20dp"
                android:textColor="@android:color/primary_text_light"
                android:textSize="12sp"
-               tools:text="month/day/year" />
-
-           <TextView
-               android:id="@+id/timeView"
-               style="@style/TextAppearance.AppCompat.Small"
-               android:layout_width="100dp"
-               android:layout_height="22dp"
-               android:layout_gravity="center"
-               android:layout_marginStart="4dp"
-               android:layout_marginLeft="4dp"
-               android:gravity="center"
-               android:textColor="@android:color/primary_text_light"
-               android:textSize="12sp"
-               tools:text="hour:mins" />
-
-          </LinearLayout> -->
+               android:textStyle="bold"
+               tools:text="Description" />
 
 
+             <TextView
+                 android:id="@+id/timeView"
+                 style="@style/TextAppearance.AppCompat.Medium"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginStart="20dp"
+                 android:textColor="@android:color/primary_text_light"
+                 android:textSize="12sp"
+                 android:textStyle="bold"
+                 tools:text="Description" />
 
 
-
-
+      </LinearLayout>
 
 
       </LinearLayout>

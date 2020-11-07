@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
     // Member variables for the adapter and RecyclerView
     private RecyclerView mRecyclerView;
     private Adapter mAdapter;
-    private TextView thedate;
-    private Button btngocalendar;
 
     private AppDatabase mDb;
 

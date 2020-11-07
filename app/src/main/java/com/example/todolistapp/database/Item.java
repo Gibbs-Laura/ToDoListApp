@@ -17,29 +17,42 @@ public class Item {
     private String description;
     private String priority;
     private String progress_number;
+    //private String clock;
     //private int priority;
+    //private String date;
+
     @ColumnInfo(name = "updated_at")
     private Date updatedAt;
+    //private String date;
 
 
 
     @Ignore
-    public Item(String name, String description, String priority, Date updatedAt, String progress_number) {
+    public Item(String name, String description, String priority,  String progress_number, Date updatedAt) {
+    //  public Item(String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
 
         this.name = name;
         this.description = description;
         this.priority = priority;
-        this.updatedAt = updatedAt;
         this.progress_number = progress_number;
+       // this.clock = clock;
+        this.updatedAt = updatedAt;
+        //this.date = date;
+
     }
-    public Item(int id, String name, String description, String priority, Date updatedAt) {
+
+
+     public Item(int id, String name, String description, String priority,  String progress_number, Date updatedAt) {
+      //public Item(int id, String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
 
         this.id = id;
         this.name = name;
         this.description = description;
         this.priority = priority;
-        this.updatedAt = updatedAt;
         this.progress_number = progress_number;
+      //  this.clock = clock;
+        this.updatedAt = updatedAt;
+         // this.date = date;
     }
 
     public int getId() {
@@ -86,4 +99,20 @@ public class Item {
     public  String getProgress_number() {return progress_number;}
 
     public void setProgress_number( String progress_number) {this.progress_number = progress_number;}
+
+   /* public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }*/
+
+  /*   public String getClock() {
+        return clock;
+    }
+
+    public void setClock(String clock) {
+        this.clock = clock;
+    }*/
 }

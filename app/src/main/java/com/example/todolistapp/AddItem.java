@@ -52,22 +52,20 @@ public class AddItem extends AppCompatActivity  {
     // Constant for logging
     private static final String TAG = AddItem.class.getSimpleName();
     // Fields for views
-    TextView thedate;
-    Button btngocalendar;
+
     EditText editText;
     EditText editTextNum;
     // Spinner mEditText1;
     RadioGroup radioGroup1;
     RadioGroup radioGroup2;
-    CalendarView mCalendarView;
-   // Button mButton;
-   DatePickerDialog picker;
-    EditText eText;
-    Button btnGet;
+   DatePickerDialog dataPicker;
+    EditText editTextDataPicker;
 
-    TimePickerDialog picker2;
-    EditText eText2;
-    TextView tvw;
+   EditText editTextTimeTest;
+
+    TimePickerDialog timePicker;
+    EditText editTextTimePicker;
+
     private int itemId = DEFAULT_TASK_ID;
 
     // Member variable for the Database
@@ -79,73 +77,49 @@ public class AddItem extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
 
-
-
-
-
-
-
-
-       // tvw=(TextView)findViewById(R.id.textView2);
-        eText=(EditText) findViewById(R.id.editText1);
-        eText.setInputType(InputType.TYPE_NULL);
-        eText.setOnClickListener(new View.OnClickListener() {
+       // DATA PICKER
+        editTextDataPicker=(EditText) findViewById(R.id.editDueDate);
+        editTextDataPicker.setInputType(InputType.TYPE_NULL);
+        editTextDataPicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar cldr = Calendar.getInstance();
-                int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
-                int year = cldr.get(Calendar.YEAR);
+                final Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
                 // date picker dialog
-                picker = new DatePickerDialog(AddItem.this,
+                dataPicker = new DatePickerDialog(AddItem.this,
                         new DatePickerDialog.OnDateSetListener() {
-
-
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                eText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                editTextDataPicker.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, year, month, day);
-                picker.show();
+                dataPicker.show();
             }
         });
 
-       // tvw=(TextView)findViewById(R.id.textView3);
-        eText2=(EditText) findViewById(R.id.editText3);
-        eText2.setInputType(InputType.TYPE_NULL);
-        eText2.setOnClickListener(new View.OnClickListener() {
+       // TIME PICKER
+        editTextTimePicker=(EditText) findViewById(R.id.dueTime);
+        editTextTimePicker.setInputType(InputType.TYPE_NULL);
+        editTextTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Calendar cldr = Calendar.getInstance();
                 int hour = cldr.get(Calendar.HOUR_OF_DAY);
                 int minutes = cldr.get(Calendar.MINUTE);
                 // time picker dialog
-                picker2 = new TimePickerDialog(AddItem.this,
+                timePicker = new TimePickerDialog(AddItem.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eText2.setText(sHour + ":" + sMinute);
+                                editTextTimePicker.setText(sHour + ":" + sMinute);
                             }
                         }, hour, minutes, true);
-                picker2.show();
+                timePicker.show();
             }
         });
-       /* btnGet=(Button)findViewById(R.id.button1);
-        btnGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvw.setText("Selected Time: "+ eText2.getText());
-            }
-        });
-*/
 
-      /*  btnGet=(Button)findViewById(R.id.button1);
-        btnGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvw.setText("Selected Date: "+ eText.getText());
-            }
-        });*/
         initViews();
 
 
@@ -214,6 +188,8 @@ public class AddItem extends AppCompatActivity  {
         radioGroup1 = findViewById(R.id.radioGroup1);
         radioGroup2 = findViewById(R.id.radioGroup2);
         editTextNum = findViewById(R.id.edit_progress_number);
+       // editTextDataPicker = findViewById(R.id.editDueDate);
+         editTextTimeTest = findViewById(R.id.editTimeTest);
 
 
 
@@ -275,6 +251,9 @@ public class AddItem extends AppCompatActivity  {
         editTextNum.setText(task.getProgress_number());
         setPriorityInViews(task.getPriority());
         setPriorityInViews(task.getName());
+
+      //  editTextTimeTest.setText(task.getClock());
+       // editTextDataPicker.setText(task.getDate());
     }
 
     /**
@@ -290,8 +269,11 @@ public class AddItem extends AppCompatActivity  {
         String name = getPriorityFromViews2();
         Date date = new Date();
         String progress_number = editTextNum.getText().toString();
+       // String date2 = editTextDataPicker.getText().toString();
+        String clock = editTextTimeTest.getText().toString();
 
-        final Item item = new Item( name, description, priority, date,progress_number);
+      //  final Item item = new Item( name, description,  priority, progress_number, clock, date);
+       final Item item = new Item( name, description,  priority, progress_number, date);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {

@@ -55,6 +55,7 @@ public class AddItem extends AppCompatActivity  {
 
     EditText editText;
     EditText editTextNum;
+    EditText editTextNum2;
     // Spinner mEditText1;
     RadioGroup radioGroup1;
     RadioGroup radioGroup2;
@@ -188,8 +189,9 @@ public class AddItem extends AppCompatActivity  {
         radioGroup1 = findViewById(R.id.radioGroup1);
         radioGroup2 = findViewById(R.id.radioGroup2);
         editTextNum = findViewById(R.id.edit_progress_number);
+       // editTextNum2 = findViewById(R.id.edit_progress_number2);
        // editTextDataPicker = findViewById(R.id.editDueDate);
-         editTextTimeTest = findViewById(R.id.editTimeTest);
+         editTextTimeTest = findViewById(R.id.editDueDate);
 
 
 
@@ -249,10 +251,12 @@ public class AddItem extends AppCompatActivity  {
         // mEditText1.setText(task.getName());
         //setOnItemSelectedListener(task.getName());
         editTextNum.setText(task.getProgress_number());
+      //  editTextNum2.setText(task.getClock());
+
         setPriorityInViews(task.getPriority());
         setPriorityInViews(task.getName());
 
-      //  editTextTimeTest.setText(task.getClock());
+        editTextTimeTest.setText(task.getClock());
        // editTextDataPicker.setText(task.getDate());
     }
 
@@ -269,11 +273,12 @@ public class AddItem extends AppCompatActivity  {
         String name = getPriorityFromViews2();
         Date date = new Date();
         String progress_number = editTextNum.getText().toString();
+       // String clock = editTextNum2.getText().toString();
        // String date2 = editTextDataPicker.getText().toString();
         String clock = editTextTimeTest.getText().toString();
 
       //  final Item item = new Item( name, description,  priority, progress_number, clock, date);
-       final Item item = new Item( name, description,  priority, progress_number, date);
+       final Item item = new Item( name, description,  priority, progress_number, clock, date);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {

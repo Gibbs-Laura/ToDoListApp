@@ -17,7 +17,7 @@ public class Item {
     private String description;
     private String priority;
     private String progress_number;
-    //private String clock;
+    private String clock;
     //private int priority;
     //private String date;
 
@@ -28,29 +28,29 @@ public class Item {
 
 
     @Ignore
-    public Item(String name, String description, String priority,  String progress_number, Date updatedAt) {
-    //  public Item(String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
+  //  public Item(String name, String description, String priority,  String progress_number, Date updatedAt) {
+     public Item(String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
 
         this.name = name;
         this.description = description;
         this.priority = priority;
         this.progress_number = progress_number;
-       // this.clock = clock;
+        this.clock = clock;
         this.updatedAt = updatedAt;
         //this.date = date;
 
     }
 
 
-     public Item(int id, String name, String description, String priority,  String progress_number, Date updatedAt) {
-      //public Item(int id, String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
+   //  public Item(int id, String name, String description, String priority,  String progress_number, Date updatedAt) {
+      public Item(int id, String name, String description, String priority,  String progress_number, String clock, Date updatedAt){
 
         this.id = id;
         this.name = name;
         this.description = description;
         this.priority = priority;
         this.progress_number = progress_number;
-      //  this.clock = clock;
+        this.clock = clock;
         this.updatedAt = updatedAt;
          // this.date = date;
     }
@@ -108,11 +108,11 @@ public class Item {
         this.date = date;
     }*/
 
-  /*   public String getClock() {
+     public String getClock() {
         return clock;
     }
 
     public void setClock(String clock) {
         this.clock = clock;
-    }*/
+    }
 }

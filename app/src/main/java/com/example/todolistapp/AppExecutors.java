@@ -3,7 +3,6 @@ package com.example.todolistapp;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
-
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -17,7 +16,7 @@ public class AppExecutors {
 
     // For Singleton instantiation
     private static final Object LOCK = new Object();
-    private static AppExecutors sInstance;
+    private static AppExecutors instance;
     private final Executor diskIO;
     private final Executor mainThread;
     private final Executor networkIO;
@@ -29,14 +28,14 @@ public class AppExecutors {
     }
 
     public static AppExecutors getInstance() {
-        if (sInstance == null) {
+        if (instance == null) {
             synchronized (LOCK) {
-                sInstance = new AppExecutors(Executors.newSingleThreadExecutor(),
+                instance = new AppExecutors(Executors.newSingleThreadExecutor(),
                         Executors.newFixedThreadPool(4),
                         new MainThreadExecutor());
             }
         }
-        return sInstance;
+        return instance;
     }
 
     public Executor diskIO() {

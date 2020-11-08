@@ -8,12 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.todolistapp.database.Item;
-
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * This Adapter creates and binds ViewHolders, that hold the description and priority of a task,
@@ -21,16 +17,11 @@ import java.util.Locale;
  */
 public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
 
-    // Constant for date format
-   // private static final String DATE_FORMAT = "dd/MM/yyy";
-
     // Member variable to handle item clicks
     final private ItemClickListener itemClickListener;
     // Class variables for the List that holds task data and the Context
     private List<Item> items;
     private Context mContext;
-    // Date formatter
-  //  private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     /**
      * Constructor for the Adapter that initializes the Context.
@@ -65,133 +56,58 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
      */
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
-        // Determine the values of the wanted data
-        Item item = items.get(position);
-        String description = item.getDescription();
-        String name = item.getCategory();
-        //int priority = item.getPriority();
-        String priority = item.getProgress();
 
-     //   String updatedAt = dateFormat.format(item.getUpdatedAt());
+        // Get the values
+        Item item              = items.get(position);
+        String description     = item.getDescription();
+        String date            = item.getDate();
+        String clock           = item.getTime();
+        String category        = item.getCategory();
+        String progress        = item.getProgress();
         String progress_number = item.getProgress_number();
-       // String progress_number2 = item.getClock();
-       // String date = item.getDate();
-        String date = item.getDate();
-        String clock = item.getTime();
-
 
         //Set values
-       // holder.taskDescriptionView1.setText(name);
         holder.descriptionView.setText(description);
-     //   holder.dateView.setText(updatedAt);
-        holder.progressNumView.setText(progress_number);
-       // holder.progressNumView2.setText(progress_number2);
-
-       // holder.dateView2.setText(date);
-
         holder.dueDateView.setText(date);
         holder.timeView.setText(clock);
 
-        // Programmatically set the text and color for the priority TextView
-        String priorityString = "" + priority; // converts int to String
-        holder.progressView.setText(priorityString);
+        // Set the text and color for the category TextView
+        String categoryString = "" + category; // converts int to String
+        holder.categoryView.setText(categoryString);
 
-        String priorityString1 = "" + name; // converts int to String
-        holder.typeView.setText(priorityString1);
+        // Set the text for the progress TextView
+        String progressString = "" + progress; // converts int to String
+        holder.progressView.setText(progressString);
+        holder.progressNumView.setText(progress_number);
 
-       /* GradientDrawable priorityCircle = (GradientDrawable) holder.priorityView.getBackground();
-        // Get the appropriate background color based on the priority
-        int priorityColor = getPriorityColor(priority);
-        priorityCircle.setColor(priorityColor);*/
-
-          GradientDrawable priorityCircle = (GradientDrawable) holder.progressView.getBackground();
-        // Get the appropriate background color based on the priority
-        int priorityColor = getPriorityColor(priority);
-        priorityCircle.setColor(priorityColor);
+        // Background color for the progress of the task (Rectangle shape)
+        GradientDrawable progressShape = (GradientDrawable) holder.progressView.getBackground();
+        int progressColor = getProgressTaskColor(progress);
+        progressShape.setColor(progressColor);
     }
 
-    /*
-    Helper method for selecting the correct priority circle color.
-    P1 = red, P2 = orange, P3 = yellow
-    */
-   /* private int getPriorityColor(int priority) {
-        int priorityColor = 0;
 
-        switch (priority) {
-            case 1:
-                priorityColor = ContextCompat.getColor(mContext, R.color.materialYellow);
-                break;
-            case 2:
-                priorityColor = ContextCompat.getColor(mContext, R.color.materialGreen);
-                break;
-            case 3:
-                priorityColor = ContextCompat.getColor(mContext, R.color.materialRed);
-                break;
-            default:
-                break;
-        }
-        return priorityColor;
-    }
-*/
-/* private int getPriorityColor(String priority) {
-        Drawable priorityColor = Drawable.createFromPath("");
 
-        switch (priority) {
-            case AddItem.PRIORITY_HIGH:
-                priorityColor = ContextCompat.getDrawable(mContext, R.drawable.ic_save_black_24dp);
-                break;
-            case AddItem.PRIORITY_MEDIUM:
-                priorityColor = ContextCompat.getDrawable(mContext, R.drawable.ic_save_black_24dp);
-                break;
-            case AddItem.PRIORITY_LOW:
-                priorityColor = ContextCompat.getDrawable(mContext, R.drawable.ic_save_black_24dp);
-                break;
-            default:
-                break;
-        }
-        return Integer.parseInt(String.valueOf(priorityColor));
-    }
-*/
+    private int getProgressTaskColor(String progress) {
+        String progressColor = "";
 
-    private int getPriorityColor(String priority) {
-        String priorityColor = "";
-
-        switch (priority) {
+        switch (progress) {
             case AddItem.DONE:
-                priorityColor = String.valueOf(ContextCompat.getColor(mContext, R.color.materialGreen));
+                progressColor = String.valueOf(ContextCompat.getColor(mContext, R.color.green));
                 break;
             case AddItem.IN_PROGRESS:
-                priorityColor = String.valueOf(ContextCompat.getColor(mContext, R.color.materialYellow));
+                progressColor = String.valueOf(ContextCompat.getColor(mContext, R.color.yellow));
                 break;
             case AddItem.LATE:
-                priorityColor = String.valueOf(ContextCompat.getColor(mContext, R.color.materialRed));
+                progressColor = String.valueOf(ContextCompat.getColor(mContext, R.color.red));
                 break;
             default:
                 break;
         }
-        return Integer.parseInt(priorityColor);
+        return Integer.parseInt(progressColor);
     }
 
 
-  /*  private int getPriorityColor(String priority) {
-        String priorityColor = "";
-
-        switch (priority) {
-            case 1:
-                priorityColor = ContextCompat.getColor(mContext, R.color.materialYellow);
-                break;
-             case 2:
-                priorityColor = ContextCompat.getColor(mContext, R.color.materialGreen);
-                break;
-            case 3:
-                priorityColor = ContextCompat.getColor(mContext, R.color.materialRed);
-                break;
-            default:
-                break;
-        }
-        return priorityColor;
-    }
-*/
     /**
      * Returns the number of items to display.
      */
@@ -223,15 +139,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
     // Inner class for creating ViewHolders
     class TaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        // Class variables for the task description and priority TextViews
+        // Class variables
         TextView descriptionView;
-        //TextView taskDescriptionView1;
-        TextView typeView;
-        TextView dateView;
+        TextView categoryView;
         TextView progressView;
         TextView progressNumView;
-        //TextView progressNumView2;
-       // TextView dateView2;
         TextView dueDateView;
         TextView timeView;
 
@@ -243,16 +155,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         public TaskViewHolder(View itemView) {
             super(itemView);
 
-            descriptionView = itemView.findViewById(R.id.description);
-            //  taskDescriptionView1 = itemView.findViewById(R.id.taskDescription1);
-            typeView = itemView.findViewById(R.id.type);
-         //   dateView = itemView.findViewById(R.id.dateView);
-            progressView = itemView.findViewById(R.id.progress);
-            progressNumView = itemView.findViewById(R.id.progress_number);
-           // progressNumView2 = itemView.findViewById(R.id.progress_number2);
-            dueDateView = itemView.findViewById(R.id.dueDateView);
-            timeView = itemView.findViewById(R.id.timeView);
-          //  dateView2 = itemView.findViewById(R.id.dateView2);
+            descriptionView = itemView.findViewById(R.id.descriptionView);
+            dueDateView     = itemView.findViewById(R.id.dueDateView);
+            timeView        = itemView.findViewById(R.id.timeView);
+            categoryView    = itemView.findViewById(R.id.categoryView);
+            progressView    = itemView.findViewById(R.id.progressView);
+            progressNumView = itemView.findViewById(R.id.progressNumberView);
+
             itemView.setOnClickListener(this);
         }
 

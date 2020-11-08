@@ -48,10 +48,8 @@ public class AddItem extends AppCompatActivity  {
     EditText editTextDueDate;
     EditText editTextTime;
     EditText editTextTimePicker;
-
     RadioGroup radioGroup1;
     RadioGroup radioGroup2;
-
     DatePickerDialog dataPicker;
     TimePickerDialog timePicker;
 
@@ -136,14 +134,13 @@ public class AddItem extends AppCompatActivity  {
                         = ViewModelProviders.of(this, factory).get(AddTaskViewModel.class);
 
                 // COMPLETED (12) Observe the LiveData object in the ViewModel. Use it also when removing the observer
-                viewModel.getTask().observe(this, new Observer<Item>() {
+                viewModel.getItem().observe(this, new Observer<Item>() {
                     @Override
                     public void onChanged(@Nullable Item item) {
-                        viewModel.getTask().removeObserver(this);
+                        viewModel.getItem().removeObserver(this);
                         populateUI(item);
                     }
                 });
-
 
             }
 

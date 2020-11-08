@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface TaskDao {
 
-    @Query("SELECT * FROM task ORDER BY progress")
+    @Query("SELECT * FROM item ORDER BY progress")
     LiveData<List<Item>> loadAllTasks();
 
     @Insert
@@ -25,6 +25,6 @@ public interface TaskDao {
     @Delete
     void deleteTask(Item item);
 
-    @Query("SELECT * FROM task WHERE id = :id")
+    @Query("SELECT * FROM item WHERE id = :id")
     LiveData<Item> loadTaskById(int id);
 }

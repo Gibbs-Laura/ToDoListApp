@@ -22,13 +22,13 @@
         <!-- If is in Progress, done or late -->
 
         <TextView
-            android:id="@+id/progress"
+            android:id="@+id/progressView"
             style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="100dp"
             android:layout_height="22dp"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:background="@drawable/priority_circle"
             android:gravity="center"
             android:textColor="@android:color/primary_text_light"
@@ -38,13 +38,13 @@
         <!-- Progress number in percentage -->
 
         <TextView
-            android:id="@+id/progress_number"
+            android:id="@+id/progressNumberView"
             style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="27dp"
             android:layout_height="18dp"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:gravity="right"
             android:textColor="@android:color/primary_text_light"
             android:textStyle="bold"
@@ -58,8 +58,8 @@
             android:layout_width="100dp"
             android:layout_height="18dp"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:gravity="center"
             android:text="% completed "
             android:textColor="@android:color/primary_text_light"
@@ -81,11 +81,11 @@
         <!-- Category -->
 
         <TextView
-            android:id="@+id/type"
+            android:id="@+id/categoryView"
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="2dp"
             android:layout_marginStart="20dp"
             android:textColor="@android:color/primary_text_light"
             tools:text="Category"
@@ -94,11 +94,11 @@
 
         <!-- Task Description -->
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/descriptionView"
             style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="2dp"
             android:layout_marginStart="20dp"
             android:textColor="@android:color/primary_text_light"
             android:textSize="15sp"
@@ -123,11 +123,11 @@
                  android:layout_width="100dp"
                  android:layout_height="10dp"
                  android:layout_gravity="center"
-                 android:layout_marginStart="4dp"
-                 android:layout_marginLeft="4dp"
+                 android:layout_marginStart="10dp"
+                 android:layout_marginLeft="30dp"
                  android:gravity="center"
                  android:textColor="@android:color/primary_text_light"
-                 android:textSize="11sp" />
+                 android:textSize="12sp" />
 
            <!-- Due date -->
 
@@ -136,12 +136,12 @@
                style="@style/TextAppearance.AppCompat.Medium"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:layout_marginLeft="20dp"
-               android:layout_marginStart="20dp"
+               android:layout_marginLeft="50dp"
+               android:layout_marginStart="50dp"
+               android:layout_marginBottom="4dp"
                android:textColor="@android:color/primary_text_light"
-               android:textSize="12sp"
-               android:textStyle="bold"
-               tools:text="Description" />
+               android:textSize="13sp"
+               tools:text="Due Date" />
 
            <!-- Time -->
 
@@ -151,12 +151,11 @@
                  style="@style/TextAppearance.AppCompat.Medium"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:layout_marginLeft="20dp"
-                 android:layout_marginStart="20dp"
+                 android:layout_marginLeft="50dp"
+                 android:layout_marginStart="50dp"
                  android:textColor="@android:color/primary_text_light"
-                 android:textSize="12sp"
-                 android:textStyle="bold"
-                 tools:text="Description" />
+                 android:textSize="13sp"
+                 tools:text="Time" />
 
 
       </LinearLayout>

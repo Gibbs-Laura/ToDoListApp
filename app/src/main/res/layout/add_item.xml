@@ -36,12 +36,8 @@
         android:hint="Add description of the task"
         android:gravity="start"
         android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+        />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0" />
 
     <!-- Due date -->
 
@@ -72,13 +68,6 @@
         android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
 
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0" />
-
-
     <!-- Time -->
 
     <TextView
@@ -107,15 +96,11 @@
         android:paddingBottom="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0" />
 
     <!-- RadioGroup for category -->
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/categoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgTime"
@@ -135,6 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvPriority"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:baselineAligned="false"
         android:orientation="horizontal"
@@ -142,44 +128,38 @@
 
         <RadioButton
             android:id="@+id/radioButtonA"
-            android:layout_width="wrap_content"
+            android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_weight="1"
             android:checked="true"
             android:padding="10dp"
             android:text="@string/home"
+            android:background="@drawable/border"
             android:theme="@style/pinkRadioButton" />
 
         <RadioButton
             android:id="@+id/radioButtonB"
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_weight="1"
             android:padding="10dp"
             android:text="@string/school"
+            android:background="@drawable/border"
             android:theme="@style/pinkRadioButton" />
 
         <RadioButton
             android:id="@+id/radioButtonC"
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
             android:text="@string/work"
+            android:background="@drawable/border"
             android:theme="@style/pinkRadioButton" />
 
     </RadioGroup>
-
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0" />
-
-
 
     <!-- RadioGroup for progress' task -->
     <TextView
@@ -204,46 +184,44 @@
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:baselineAligned="false"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:orientation="horizontal"
         android:weightSum="3">
 
         <RadioButton
             android:id="@+id/radioButtonD"
-            android:layout_width="wrap_content"
+            android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_weight="1"
             android:checked="true"
             android:padding="10dp"
             android:text="@string/progress"
+            android:background="@drawable/border"
             android:theme="@style/YellowRadioButton" />
 
         <RadioButton
             android:id="@+id/radioButtonE"
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_weight="1"
             android:padding="10dp"
             android:text="@string/done"
+            android:background="@drawable/border"
             android:theme="@style/GreenRadioButton" />
 
         <RadioButton
             android:id="@+id/radioButtonF"
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
             android:text="@string/late"
+            android:background="@drawable/border"
             android:theme="@style/RedRadioButton" />
 
     </RadioGroup>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0" />
-
 
 
     <!-- What percentage of the task is being done -->

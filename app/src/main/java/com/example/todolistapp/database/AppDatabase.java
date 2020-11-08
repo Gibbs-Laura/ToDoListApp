@@ -12,12 +12,12 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 @Database(entities = {Item.class}, version = 1, exportSchema = false)
-@TypeConverters(DateConverter.class)
+//@TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String LOG_TAG = AppDatabase.class.getSimpleName();
     private static final Object LOCK = new Object();
-    private static final String DATABASE_NAME = "todolistapp4";
+    private static final String DATABASE_NAME = "todolistapp5";
     private static AppDatabase sInstance;
 
     public static AppDatabase getInstance(Context context) {

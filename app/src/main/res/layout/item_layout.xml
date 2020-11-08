@@ -18,6 +18,9 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+
+        <!-- If is in Progress, done or late -->
+
         <TextView
             android:id="@+id/progress"
             style="@style/TextAppearance.AppCompat.Small"
@@ -31,6 +34,8 @@
             android:textColor="@android:color/primary_text_light"
             android:textStyle="bold"
             tools:text="Progress" />
+
+        <!-- Progress number in percentage -->
 
         <TextView
             android:id="@+id/progress_number"
@@ -72,6 +77,9 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+
+        <!-- Category -->
+
         <TextView
             android:id="@+id/type"
             style="@style/TextAppearance.AppCompat.Medium"
@@ -84,7 +92,7 @@
             android:textSize="15sp"
             android:textStyle="bold"/>
 
-        <!-- TextView that displays the description -->
+        <!-- Task Description -->
         <TextView
             android:id="@+id/description"
             style="@style/TextAppearance.AppCompat.Medium"
@@ -106,6 +114,9 @@
          android:layout_weight="1"
          android:orientation="vertical">
 
+
+           <!-- Nothing -->
+
                 <TextView
                  android:id="@+id/dateView"
                  style="@style/TextAppearance.AppCompat.Small"
@@ -118,6 +129,8 @@
                  android:textColor="@android:color/primary_text_light"
                  android:textSize="11sp" />
 
+           <!-- Due date -->
+
            <TextView
                android:id="@+id/dueDateView"
                style="@style/TextAppearance.AppCompat.Medium"
@@ -129,6 +142,8 @@
                android:textSize="12sp"
                android:textStyle="bold"
                tools:text="Description" />
+
+           <!-- Time -->
 
 
              <TextView

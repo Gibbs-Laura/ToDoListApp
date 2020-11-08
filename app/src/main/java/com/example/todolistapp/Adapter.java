@@ -22,7 +22,7 @@ import java.util.Locale;
 public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
 
     // Constant for date format
-    private static final String DATE_FORMAT = "dd/MM/yyy";
+   // private static final String DATE_FORMAT = "dd/MM/yyy";
 
     // Member variable to handle item clicks
     final private ItemClickListener itemClickListener;
@@ -30,7 +30,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
     private List<Item> items;
     private Context mContext;
     // Date formatter
-    private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
+  //  private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     /**
      * Constructor for the Adapter that initializes the Context.
@@ -68,9 +68,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         // Determine the values of the wanted data
         Item item = items.get(position);
         String description = item.getDescription();
-        String name = item.getName();
+        String name = item.getCategory();
         //int priority = item.getPriority();
-        String priority = item.getPriority();
+        String priority = item.getProgress();
 
      //   String updatedAt = dateFormat.format(item.getUpdatedAt());
         String progress_number = item.getProgress_number();

@@ -1,7 +1,5 @@
 package com.example.todolistapp;
 
-
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.arch.lifecycle.Observer;
@@ -15,19 +13,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.CalendarView;
-import android.widget.TextView;
 import java.util.Calendar;
 import android.widget.TimePicker;
-
 import com.example.todolistapp.database.AppDatabase;
 import com.example.todolistapp.database.Item;
-
-import java.util.Date;
 
 
 public class AddItem extends AppCompatActivity  {
@@ -36,37 +28,33 @@ public class AddItem extends AppCompatActivity  {
     public static final String EXTRA_TASK_ID = "extraTaskId";
     // Extra for the task ID to be received after rotation
     public static final String INSTANCE_TASK_ID = "instanceTaskId";
-    // Constants for priority
-    /*public static final int PRIORITY_HIGH = 1;
-    public static final int PRIORITY_MEDIUM = 2;
-    public static final int PRIORITY_LOW = 3;*/
+    // Constant for default task id to be used when not in update mode
+    private static final int DEFAULT_TASK_ID = -1;
 
+    // Constants for progress
     public static final String DONE = "DONE";
     public static final String IN_PROGRESS = "IN PROGRESS";
     public static final String LATE = "LATE";
+    // Constants for categories
     public static final String WORK = "WORK";
     public static final String SCHOOL = "SCHOOL";
     public static final String HOME= "HOME";
-    // Constant for default task id to be used when not in update mode
-    private static final int DEFAULT_TASK_ID = -1;
-    // Constant for logging
-    private static final String TAG = AddItem.class.getSimpleName();
-    // Fields for views
 
-    EditText editText;
+
+    // VIEWS
+    EditText editTextDescrip;
     EditText editTextNum;
-    EditText editTextNum2;
-    // Spinner mEditText1;
+    EditText editTextDataPicker;
+    EditText editTextDueDate;
+    EditText editTextTime;
+    EditText editTextTimePicker;
+
     RadioGroup radioGroup1;
     RadioGroup radioGroup2;
-   DatePickerDialog dataPicker;
-    EditText editTextDataPicker;
 
-   EditText editTextTimeTest;
-    EditText editTextTime;
-
+    DatePickerDialog dataPicker;
     TimePickerDialog timePicker;
-    EditText editTextTimePicker;
+
 
     private int itemId = DEFAULT_TASK_ID;
 
@@ -176,34 +164,13 @@ public class AddItem extends AppCompatActivity  {
      * initViews is called from onCreate to init the member variable views
      */
     private void initViews() {
-        editText = findViewById(R.id.itemDesc);
-        //  mEditText1 = findViewById(R.id.editTextTaskDescription1);
-        // mEditText1 = findViewById(R.id.spinner);
-       /* ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.topic, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mEditText1.setAdapter(adapter);
-        mEditText1.setOnItemSelectedListener(this);*/
+        editTextDescrip =  findViewById(R.id.itemDesc);
+        editTextDueDate =  findViewById(R.id.editDueDate);
+        editTextTime    =  findViewById(R.id.editDueTime);
+        editTextNum     =  findViewById(R.id.edit_progress_number);
+        radioGroup1     =  findViewById(R.id.radioGroup1);
+        radioGroup2     =  findViewById(R.id.radioGroup2);
 
-
-
-        radioGroup1 = findViewById(R.id.radioGroup1);
-        radioGroup2 = findViewById(R.id.radioGroup2);
-        editTextNum = findViewById(R.id.edit_progress_number);
-       // editTextNum2 = findViewById(R.id.edit_progress_number2);
-       // editTextDataPicker = findViewById(R.id.editDueDate);
-         editTextTimeTest = findViewById(R.id.editDueDate);
-        editTextTime = findViewById(R.id.editDueTime);
-
-
-
-       /* mButton = findViewById(R.id.saveButton);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onSaveButtonClicked();
-            }
-        });*/
     }
 
 
@@ -224,11 +191,11 @@ public class AddItem extends AppCompatActivity  {
          */
         int id = item.getItemId();
 
-        /*if (id == android.R.id.home) {
+        if (id == android.R.id.home) {
             onBackPressed();
             return true;
         }
-*/
+
         if (id == R.id.save) {
             onSaveButtonClicked();
 
@@ -249,18 +216,14 @@ public class AddItem extends AppCompatActivity  {
             return;
         }
 
-        editText.setText(task.getDescription());
-        // mEditText1.setText(task.getName());
-        //setOnItemSelectedListener(task.getName());
-        editTextNum.setText(task.getProgress_number());
-      //  editTextNum2.setText(task.getClock());
-
-        setPriorityInViews(task.getPriority());
-        setPriorityInViews(task.getName());
-
-        editTextTimeTest.setText(task.getDate());
-       // editTextDataPicker.setText(task.getDate());
+        editTextDescrip.setText(task.getDescription());
+        editTextDueDate.setText(task.getDate());
         editTextTime.setText(task.getTime());
+        editTextNum.setText(task.getProgress_number());
+
+        setCategoryFromRadioButton1(task.getCategory());
+        setProgressFromRadioButton2(task.getProgress());
+
     }
 
     /**
@@ -268,21 +231,15 @@ public class AddItem extends AppCompatActivity  {
      * It retrieves user input and inserts that new task data into the underlying database.
      */
     public void onSaveButtonClicked() {
-        String description = editText.getText().toString();
-        //String name = mEditText1.getText().toString();
-        // String name = mEditText1.getOnItemSelectedListener().toString();
-        // int priority = getPriorityFromViews();
-        String priority = getPriorityFromViews();
-        String name = getPriorityFromViews2();
-        Date date = new Date();
-        String progress_number = editTextNum.getText().toString();
-       // String clock = editTextNum2.getText().toString();
-       // String date2 = editTextDataPicker.getText().toString();
-        String dueDate = editTextTimeTest.getText().toString();
-        String time = editTextTime.getText().toString();
+        String description     =  editTextDescrip.getText().toString();
+        String dueDate         =  editTextDueDate.getText().toString();
+        String time            =  editTextTime.getText().toString();
+        String category        =  getCategoryFromRadioButton1();
+        String priority        =  getProgressFromRadioButton2();
+        String progress_number =  editTextNum.getText().toString();
 
-        //final Item item = new Item( name, description,  priority, progress_number, dueDate,time, date);
-       final Item item = new Item( name, description,  priority, progress_number, dueDate,time);
+
+       final Item item = new Item( category, description,  priority, progress_number, dueDate,time);
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
@@ -298,81 +255,65 @@ public class AddItem extends AppCompatActivity  {
             }
         });
 
-
-
-    }
-
-    /**
-     * getPriority is called whenever the selected priority needs to be retrieved
-     * @return
-     */
-   /* public int getPriorityFromViews() {
-        int priority = 1;
-        int checkedId = ((RadioGroup) findViewById(R.id.radioGroup)).getCheckedRadioButtonId();
-        switch (checkedId) {
-            case R.id.radButton1:
-                priority = PRIORITY_HIGH;
-                break;
-            case R.id.radButton2:
-                priority = PRIORITY_MEDIUM;
-                break;
-            case R.id.radButton3:
-                priority = PRIORITY_LOW;
-        }
-        return priority;
-    }*/
-
-    public String getPriorityFromViews() {
-        String priority = "";
-        int checkedId = ((RadioGroup) findViewById(R.id.radioGroup2)).getCheckedRadioButtonId();
-        switch (checkedId) {
-            case R.id.radioButtonD:
-                priority = IN_PROGRESS;
-                break;
-            case R.id.radioButtonE:
-                priority = DONE;
-                break;
-            case R.id.radioButtonF:
-                priority = LATE;
-        }
-        return priority;
     }
 
 
-    public String getPriorityFromViews2() {
-        String priority = "";
+    public String getCategoryFromRadioButton1() {
+        String category = "";
         int checkedId = ((RadioGroup) findViewById(R.id.radioGroup1)).getCheckedRadioButtonId();
         switch (checkedId) {
             case R.id.radioButtonA:
-                priority = HOME;
+                category = HOME;
                 break;
             case R.id.radioButtonB:
-                priority = SCHOOL;
+                category = SCHOOL;
                 break;
             case R.id.radioButtonC:
-                priority = WORK;
+                category = WORK;
         }
-        return priority;
+        return category;
     }
+
+
+    public String getProgressFromRadioButton2() {
+        String progress = "";
+        int checkedId = ((RadioGroup) findViewById(R.id.radioGroup2)).getCheckedRadioButtonId();
+        switch (checkedId) {
+            case R.id.radioButtonD:
+                progress = IN_PROGRESS;
+                break;
+            case R.id.radioButtonE:
+                progress = DONE;
+                break;
+            case R.id.radioButtonF:
+                progress = LATE;
+        }
+        return progress;
+    }
+
+
+    public void setCategoryFromRadioButton1(String priority) {
+        switch (priority) {
+            case HOME:
+                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonA);
+                break;
+            case SCHOOL:
+                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonB);
+                break;
+            case WORK:
+                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonC);
+        }
+
+    }
+
 
     /**
      * setPriority is called when we receive a task from MainActivity
      *
      * @param priority the priority value
      */
-   /* public void setPriorityInViews(int priority) {
-        switch (priority) {
-            case PRIORITY_HIGH:
-                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton1);
-                break;
-            case PRIORITY_MEDIUM:
-                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton2);
-                break;
-            case PRIORITY_LOW:
-                ((RadioGroup) findViewById(R.id.radioGroup)).check(R.id.radButton3);
-        }*/
 
-    public void setPriorityInViews(String priority) {
+    public void setProgressFromRadioButton2(String priority) {
         switch (priority) {
             case IN_PROGRESS:
                 ((RadioGroup) findViewById(R.id.radioGroup2)).check(R.id.radioButtonD);
@@ -387,30 +328,4 @@ public class AddItem extends AppCompatActivity  {
 
     }
 
-    public void setPriorityInViews2(String priority) {
-        switch (priority) {
-            case HOME:
-                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonA);
-                break;
-            case SCHOOL:
-                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonB);
-                break;
-            case WORK:
-                ((RadioGroup) findViewById(R.id.radioGroup1)).check(R.id.radioButtonC);
-        }
-
-
-    }
-
-
-/*
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }*/
 }

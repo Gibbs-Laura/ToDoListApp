@@ -272,6 +272,6 @@
         android:textSize="14sp"
         android:hint="@string/edit_progress_number"
         android:paddingBottom="@dimen/activity_horizontal_margin" />
-    
+
 
  </LinearLayout>

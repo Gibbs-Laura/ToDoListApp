@@ -11,51 +11,43 @@ import android.widget.TextView;
 import com.example.todolistapp.database.Item;
 import java.util.List;
 
-/**
- * This Adapter creates and binds ViewHolders, that hold the description and priority of a task,
- * to a RecyclerView to efficiently display data.
- */
+
+
+// The main function of the adapter is to create and binds ViewHolders
 public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
 
     // Member variable to handle item clicks
     final private ItemClickListener itemClickListener;
-    // Class variables for the List that holds task data and the Context
+    // Class variables
     private List<Item> items;
     private Context mContext;
 
-    /**
-     * Constructor for the Adapter that initializes the Context.
-     *
-     * @param context  the current Context
-     * @param listener the ItemClickListener
-     */
+
+    // The Adapter's constructor.
     public Adapter(Context context, ItemClickListener listener) {
+        // initialize the context and the itemClickListener
         mContext = context;
         itemClickListener = listener;
     }
 
-    /**
-     * Called when ViewHolders are created to fill a RecyclerView.
-     *
-     * @return A new ItemViewHolder that holds the view for each task
-     */
+
+
+    // In order to fill the RecyclerView, this will called After a ViewHolders are created
     @Override
     public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Inflate the item_layout to a view
         View v = LayoutInflater.from(mContext)
                 .inflate(R.layout.item_layout, parent, false);
 
-        return new TaskViewHolder(v);
+        return new TaskViewHolder(v); // Holds the view for each item
     }
 
-    /**
-     * Called by the RecyclerView to display data at a specified position in the Cursor.
-     *
-     * @param holder   The ViewHolder to bind Cursor data to
-     * @param position The position of the data in the Cursor
-     */
+
+
+    // This will be called by the RecyclerView to display data at a specific position
     @Override
-    public void onBindViewHolder(TaskViewHolder holder, int position) {
+    public void onBindViewHolder(TaskViewHolder holder, int position) { // Holder (ViewHolder to binf the data to)
+        //position (Position of the data in the cursor )
 
         // Get the values
         Item item              = items.get(position);
@@ -71,11 +63,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         holder.dueDateView.setText(date);
         holder.timeView.setText(clock);
 
-        // Set the text and color for the category TextView
         String categoryString = "" + category; // converts int to String
         holder.categoryView.setText(categoryString);
 
-        // Set the text for the progress TextView
+
         String progressString = "" + progress; // converts int to String
         holder.progressView.setText(progressString);
         holder.progressNumView.setText(progress_number);
@@ -108,9 +99,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
     }
 
 
-    /**
-     * Returns the number of items to display.
-     */
+
+
+    //Returns the number of items to display.
     @Override
     public int getItemCount() {
         if (items == null) {
@@ -123,12 +114,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.TaskViewHolder> {
         return items;
     }
 
-    /**
-     * When data changes, this method updates the list of taskEntries
-     * and notifies the adapter to use the new values on it
-     */
-    public void setTasks(List<Item> taskEntries) {
-        items = taskEntries;
+
+
+    // Notify the adapter every time the data has changed and updates the items
+    public void setTasks(List<Item> listOfItems) {
+        items = listOfItems;
         notifyDataSetChanged();
     }
 

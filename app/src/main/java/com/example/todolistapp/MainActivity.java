@@ -93,11 +93,16 @@ public class MainActivity extends AppCompatActivity implements Adapter.ItemClick
         return super.onOptionsItemSelected(item);
     }
 
+
+    // Get Reference to viewModel in our activity
     private void setupViewModel() {
-        MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        viewModel.getTasks().observe(this, new Observer<List<Item>>() {
+        MainViewModel ItemViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        ItemViewModel.getTasks().observe(this, new Observer<List<Item>>() {
+
+            // this will be triggered every time our LiveData changes
             @Override
             public void onChanged(@Nullable List<Item> items) {
+                //update recyclerView
                 adapter.setTasks(items);
             }
         });

@@ -5,15 +5,15 @@ import android.arch.lifecycle.ViewModel;
 import com.example.todolistapp.database.AppDatabase;
 import com.example.todolistapp.database.Item;
 
-
+// The viewModel class allows data to survive configuration
+// changes such as screen rotations
 public class AddTaskViewModel extends ViewModel {
 
-    // COMPLETED (6) Add a task member variable for the Item object wrapped in a LiveData
+
+    // Variable for LiveData
     private LiveData<Item> item;
 
-
-    // COMPLETED (8) Create a constructor where you call loadTaskById of the taskDao to initialize the tasks variable
-    // Note: The constructor should receive the database and the taskId
+    // The constructor that  receives the database and the ItemId
     public AddTaskViewModel(AppDatabase database, int itemId) {
         item = database.taskDao().loadTaskById(itemId);
 
@@ -21,6 +21,7 @@ public class AddTaskViewModel extends ViewModel {
 
     //Link to AddItem class
     public LiveData<Item> getItem() {
+
         return item;
     }
 

@@ -25,6 +25,8 @@ public interface TaskDao {
     @Delete
     void deleteTask(Item item);
 
+    // As soon there is any changes in the item table the value in Item will be updated
+    // LiveData allows to observe the Item object.
     @Query("SELECT * FROM item WHERE id = :id")
     LiveData<Item> loadTaskById(int id);
 }

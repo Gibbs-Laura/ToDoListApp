@@ -4,10 +4,13 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+// @Entity is a room annotation, it will create a sqLite table for the item object
 @Entity(tableName = "item")
 
+// Entity is a java class that represents one table in our room database
 public class Item {
 
+    // unique id everytime a new row is inserted
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String category;
